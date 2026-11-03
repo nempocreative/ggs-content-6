@@ -27,7 +27,7 @@ type Draft = Omit<AdRow, "week" | "perDay">;
 const plan: Record<Brand, Draft[][]> = {
   beauty: [
     [
-      { platform: "Instagram", boost: "Reels nail art + info promo Pahlawan Glow Day & 11.11", goal: "Chat WhatsApp", days: "Min – Rab" },
+      { platform: "Instagram", boost: "Pahlawan Glow Day & 11.11 — Reels nail art", goal: "Chat WhatsApp", days: "Min – Rab" },
       { platform: "TikTok", boost: "Before–after nail art + teaser 11.11", goal: "Tayangan video", days: "Min – Rab" },
     ],
     [
@@ -61,7 +61,7 @@ const plan: Record<Brand, Draft[][]> = {
   ],
   hair: [
     [
-      { platform: "Instagram", boost: "Reels potong rapi + info Pahlawan Rapi & 11.11 Ganteng", goal: "Chat WhatsApp", days: "Min – Rab" },
+      { platform: "Instagram", boost: "Pahlawan Rapi & 11.11 Ganteng — potong rapi", goal: "Chat WhatsApp", days: "Min – Rab" },
       { platform: "TikTok", boost: "Transformasi rambut + teaser 11.11 Ganteng", goal: "Tayangan video", days: "Min – Rab" },
     ],
     [
