@@ -10,7 +10,7 @@ const BODY = { fontFamily: "Calibri, sans-serif" };
 /** Master header + footer feed IG 1080×1440. Semua desain memakai bingkai ini. */
 export function FeedFrame({
   id, brand, dark, badge, footer, children,
-}: { id: string; brand: Brand; dark?: boolean; badge?: string; footer?: string; children?: ReactNode }) {
+}: { id: string; brand: Brand; dark?: boolean | undefined; badge?: string | undefined; footer?: string | undefined; children?: ReactNode }) {
   const beauty = brand === "beauty";
   const logo = beauty ? logoBeauty : logoHair;
   const accent = beauty ? "bg-ggs-pink" : "bg-ggs-gold";
