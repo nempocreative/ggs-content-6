@@ -3,7 +3,7 @@ import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } fr
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE } from "@/lib/ads";
-import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, type PromoKind } from "@/lib/promos";
+import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, promoAdWindow, type PromoKind } from "@/lib/promos";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -666,18 +666,19 @@ function PromoCalendarSlide({ num, brand = "beauty" }: { num: number; brand?: "b
       <div className="absolute top-[42px] left-[64px]"><Kicker color={hair ? "gold" : "pink"}>GGS • KALENDER PROMO {hair ? "COWOK" : "CEWEK"}</Kicker></div>
       <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>Promo {hair ? "Cowok" : "Cewek"} Nov – Des 2026</h2>
       <div className="absolute top-[160px] left-[64px] w-[1152px]">
-        <div className={`grid grid-cols-[130px_200px_200px_1fr] gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
-          <div>Tanggal</div><div>Momen</div><div>Nama promo</div><div>Detail</div>
+        <div className={`grid grid-cols-[120px_170px_180px_1fr_150px] gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
+          <div>Tanggal</div><div>Momen</div><div>Nama promo</div><div>Detail</div><div>Iklan IG + TikTok</div>
         </div>
         {rows.map((p) => (
-          <div key={p.name} className={`grid grid-cols-[130px_200px_200px_1fr] items-center gap-3 border-b py-[8px] text-[13px] leading-[1.3] ${line}`}>
+          <div key={p.name} className={`grid grid-cols-[120px_170px_180px_1fr_150px] items-center gap-3 border-b py-[8px] text-[13px] leading-[1.3] ${line}`}>
             <div><span className={`rounded px-2 py-[3px] text-[11.5px] font-bold ${chip}`}>{p.date}</span></div>
             <div className={muted}>{p.occasion}</div>
             <div className={`font-bold ${ink}`}>{p.name}</div>
             <div className={muted}>{p.detail}</div>
+            <div className={`font-bold ${ink}`}>{promoAdWindow(p).label}</div>
           </div>
         ))}
-        <div className={`mt-3 text-[12px] ${muted}`}>Lebaran 2026 sudah lewat (Maret) — promo Lebaran berikutnya disiapkan untuk Maret 2027. Semua diskon masih usulan.</div>
+        <div className={`mt-3 text-[12px] ${muted}`}>Iklan tiap promo jalan 3 hari sebelum sampai hari H, {rupiah(50000)}/hari per platform ({TAX_NOTE}). Lebaran 2026 sudah lewat — promo Lebaran disiapkan untuk Maret 2027. Diskon masih usulan.</div>
       </div>
       <Footer n={num} dark={hair} />
     </Stage>
