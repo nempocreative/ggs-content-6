@@ -139,7 +139,9 @@ const MONTHS: Record<string, number> = { Nov: 10, Des: 11, Jan: 0 };
 const MONTH_NAME = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
 const parseDay = (s: string, fallbackMonth: string) => {
   const m = s.trim().match(/^(\d{1,2})\s*(Nov|Des|Jan)?/i);
-  const mon = MONTHS[(m?.[2] ?? fallbackMonth).toLowerCase() === "nov" ? "Nov" : (m?.[2] ?? fallbackMonth)] ?? MONTHS[fallbackMonth] ?? 11;
+  const raw = m?.[2] ?? fallbackMonth;
+  const key = raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();
+  const mon = MONTHS[key] ?? MONTHS[fallbackMonth] ?? 11;
   const day = Number(m?.[1]);
   return { mon, day, year: mon === 0 ? 2027 : 2026 };
 };
