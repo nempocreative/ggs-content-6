@@ -34,3 +34,5 @@
 
 ## Selesai: Galeri desain feed IG (Nov 2026)
 - [x] Halaman /feed: 12 template 1080x1440 (6 promo + 6 harian, dua brand), filter jenis/brand, unduh PNG per desain — terverifikasi PNG 1080x1440
+- [x] /feed dirapikan: desain turunan & teks tidak penting dihapus, tiap tab (Cowok / Cewek) tinggal master header+footer + tombol unduh.
+- [x] Pratinjau master diperbesar: kartu ikut lebar layar (maks 670×893), posisi tengah, tombol unduh di bawah kartu — PNG tetap 1080×1440.
