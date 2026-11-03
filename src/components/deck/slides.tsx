@@ -5,6 +5,7 @@ import { captions, captionRules, hashtags } from "@/lib/captions";
 import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, decTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE, promoAdWindow } from "@/lib/ads";
 import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, type PromoKind } from "@/lib/promos";
 import { visitsFor, influencerRules, TIER_INFO } from "@/lib/influencer";
+import { livesFor, liveRules } from "@/lib/live";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -728,6 +729,42 @@ function InfluencerSlide({ num, brand = "beauty" }: { num: number; brand?: "beau
   );
 }
 
+// ---- Jadwal live ----
+function LiveSlide({ num, brand = "beauty" }: { num: number; brand?: "beauty" | "hair" }) {
+  const hair = brand === "hair";
+  const rows = livesFor(brand);
+  const ink = hair ? "text-primary-foreground" : "text-ggs-ink";
+  const muted = hair ? "text-primary-foreground/65" : "text-ggs-gray";
+  const line = hair ? "border-primary-foreground/15" : "border-border";
+  const chip = hair ? "bg-ggs-gold-soft text-ggs-ink" : "bg-ggs-pink-soft text-ggs-pink";
+  const cols = "grid-cols-[110px_110px_110px_190px_1fr_160px]";
+  return (
+    <Stage dark={hair}>
+      <div className="absolute top-[42px] left-[64px]"><Kicker color={hair ? "gold" : "pink"}>GGS • JADWAL LIVE {hair ? "COWOK" : "CEWEK"}</Kicker></div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>Jadwal Live Nov – Des 2026</h2>
+      <div className="absolute top-[160px] left-[64px] w-[1152px]">
+        <div className={`grid ${cols} gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
+          <div>Tanggal</div><div>Jam (WIB)</div><div>Platform</div><div>Promo</div><div>Ngelive-in apa</div><div>Host</div>
+        </div>
+        {rows.map((l) => (
+          <div key={l.date} className={`grid ${cols} items-center gap-3 border-b py-[8px] text-[13px] leading-[1.3] ${line}`}>
+            <div><span className={`rounded px-2 py-[3px] text-[11.5px] font-bold ${chip}`}>{l.date}</span></div>
+            <div className={`font-bold ${ink}`}>{l.time}</div>
+            <div className={muted}>{l.platform}</div>
+            <div className={`font-bold ${ink}`}>{l.promo}</div>
+            <div className={muted}>{l.topic}</div>
+            <div className={muted}>{l.host}</div>
+          </div>
+        ))}
+        <ul className={`mt-3 grid grid-cols-2 gap-x-6 gap-y-1 text-[12px] leading-[1.4] ${muted}`}>
+          {liveRules.map((r) => <li key={r}>• {r}</li>)}
+        </ul>
+      </div>
+      <Footer n={num} dark={hair} />
+    </Stage>
+  );
+}
+
 // ---- Program promo ----
 function PromoSlide({
   num,
@@ -1239,6 +1276,8 @@ export const slides: { id: string; el: () => ReactNode }[] = [
   { id: "promo-kalender-hair", el: () => <PromoCalendarSlide num={49} brand="hair" /> },
   { id: "influencer-beauty", el: () => <InfluencerSlide num={50} brand="beauty" /> },
   { id: "influencer-hair", el: () => <InfluencerSlide num={51} brand="hair" /> },
+  { id: "live-beauty", el: () => <LiveSlide num={52} brand="beauty" /> },
+  { id: "live-hair", el: () => <LiveSlide num={53} brand="hair" /> },
 
   { id: "closing", el: ClosingSlide },
 ];
