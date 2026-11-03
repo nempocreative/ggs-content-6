@@ -134,16 +134,3 @@ export const hairPromoCalendar: DatedPromo[] = [
   { month: "Des", date: "28–31 Des", name: "New Year Fresh", occasion: "Malam tahun baru", detail: "Paket habis kerja: Potong + Facial 15 menit + Pijat Kepala, booking wajib DP." },
 ];
 
-// Jadwal iklan untuk tiap promo bertanggal: IG + TikTok jalan 3 hari sebelum promo mulai sampai hari H.
-const MONTHS: Record<string, number> = { Nov: 10, Des: 11, Jan: 0 };
-const MON_NAME = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
-export const AD_LEAD_DAYS = 3;
-export function promoAdWindow(p: DatedPromo): { label: string; days: number } {
-  const m = p.date.match(/^(\d+)(?:\s*[–-]\s*\d+)?\s*(Nov|Des|Jan)?/);
-  const day = Number(m?.[1]);
-  const mon: number = MONTHS[m?.[2] ?? p.month] ?? MONTHS[p.month] ?? 10;
-  const start = new Date(2026, mon, day);
-  const from = new Date(2026, mon, day - AD_LEAD_DAYS);
-  const f = (d: Date) => `${d.getDate()} ${MON_NAME[d.getMonth()]}`;
-  return { label: `${f(from)} – ${f(start)}`, days: Math.round((+start - +from) / 864e5) + 1 };
-}

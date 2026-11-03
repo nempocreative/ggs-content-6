@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } from "@/lib/content-plan";
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
-import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE } from "@/lib/ads";
-import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, promoAdWindow, type PromoKind } from "@/lib/promos";
+import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, decTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE, promoAdWindow } from "@/lib/ads";
+import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, type PromoKind } from "@/lib/promos";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -617,21 +617,22 @@ function AdSlide({ brand, num }: { brand: Brand; num: number }) {
       </div>
       <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>Iklan Instagram & TikTok</h2>
       <div className="absolute top-[160px] left-[64px] w-[800px]">
-        <div className={`grid grid-cols-[150px_96px_1fr_130px_90px_100px] gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
+        <div className={`grid grid-cols-[118px_76px_1fr_104px_64px_86px] gap-2.5 border-b pb-1.5 text-[10.5px] font-bold tracking-[0.1em] uppercase ${line} ${muted}`}>
           <div>Minggu</div><div>Platform</div><div>Post yang diiklankan</div><div>Tujuan</div><div>Hari</div><div className="text-right">Biaya</div>
         </div>
         {rows.map((r, i) => (
-          <div key={i} className={`grid h-[50px] grid-cols-[150px_96px_1fr_130px_90px_100px] items-center gap-3 border-b text-[13px] ${line}`}>
+          <div key={i} className={`grid h-[28px] grid-cols-[118px_76px_1fr_104px_64px_86px] items-center gap-2.5 border-b text-[12px] ${line}`}>
             <div className={`font-bold ${accent}`}>{i % 2 === 0 ? adWeekLabel(r.week) : ""}</div>
-            <div><span className={`rounded px-2 py-[3px] text-[11.5px] font-bold ${chip}`}>{r.platform}</span></div>
+            <div><span className={`rounded px-1.5 py-[2px] text-[10.5px] font-bold ${chip}`}>{r.platform}</span></div>
             <div className={`font-bold ${ink}`}>{r.boost}</div>
             <div className={muted}>{r.goal}</div>
             <div className={muted}>{r.days}</div>
             <div className={`text-right ${ink}`}>{rupiah(rowTotal(r))}</div>
           </div>
         ))}
-        <div className={`flex justify-between pt-3 text-[15px] font-bold ${ink}`}>
-          <span>Total sebulan ({TAX_NOTE})</span><span className={accent}>{rupiah(monthTotal(brand))}</span>
+        <div className={`flex justify-between pt-2 text-[13.5px] font-bold ${ink}`}>
+          <span>Total Nov • Des ({TAX_NOTE})</span>
+          <span className={accent}>{rupiah(monthTotal(brand))} • {rupiah(decTotal(brand))}</span>
         </div>
       </div>
       <div className="absolute top-[160px] left-[904px] w-[312px] space-y-4">
@@ -678,7 +679,7 @@ function PromoCalendarSlide({ num, brand = "beauty" }: { num: number; brand?: "b
             <div className={`font-bold ${ink}`}>{promoAdWindow(p).label}</div>
           </div>
         ))}
-        <div className={`mt-3 text-[12px] ${muted}`}>Iklan tiap promo jalan 3 hari sebelum sampai hari H, {rupiah(50000)}/hari per platform ({TAX_NOTE}). Lebaran 2026 sudah lewat — promo Lebaran disiapkan untuk Maret 2027. Diskon masih usulan.</div>
+        <div className={`mt-3 text-[12px] ${muted}`}>Kolom iklan = jendela mingguan dari hal. 44–45 yang menutupi tanggal promo — {rupiah(50000)}/hari per platform ({TAX_NOTE}). Lebaran 2026 sudah lewat — promo Lebaran disiapkan untuk Maret 2027. Diskon masih usulan.</div>
       </div>
       <Footer n={num} dark={hair} />
     </Stage>

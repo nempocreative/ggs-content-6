@@ -64,12 +64,14 @@ describe("kalender promo cowok", () => {
   });
 });
 
-import { promoAdWindow } from "@/lib/promos";
+import { promoAdWindow } from "@/lib/ads";
 describe("iklan promo", () => {
-  it("iklan jalan 3 hari sebelum promo sampai hari H", () => {
-    const p = promoCalendar.find((x) => x.date === "11 Nov")!;
-    expect(promoAdWindow(p)).toEqual({ label: "8 Nov – 11 Nov", days: 4 });
-    const d = promoCalendar.find((x) => x.date === "1–11 Des")!;
-    expect(promoAdWindow(d).label).toBe("28 Nov – 1 Des");
+  it("tiap promo bertanggal (cewek & cowok) ketutup minimal satu jendela iklan mingguan", () => {
+    for (const p of [...promoCalendar, ...hairPromoCalendar]) expect(promoAdWindow(p).label).not.toBe("—");
+  });
+  it("jendela iklan cocok dengan tanggal promo", () => {
+    expect(promoAdWindow(promoCalendar.find((x) => x.date === "11 Nov")!).label).toBe("8–11 Nov");
+    expect(promoAdWindow(promoCalendar.find((x) => x.date === "25 Nov – 2 Des")!).label).toBe("25–28 Nov • 1–3 Des");
+    expect(promoAdWindow(promoCalendar.find((x) => x.date === "12 Des")!).label).toBe("10–12 Des");
   });
 });
