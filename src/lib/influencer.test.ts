@@ -21,8 +21,9 @@ describe("jadwal influencer", () => {
   test("tidak ada kunjungan pas owner di Jepang (16–24 Nov) atau hari podcast (2, 9, 23 Nov)", () => {
     for (const v of influencerVisits) {
       if (v.month !== "Nov") continue;
-      expect(DAY(v)).not.toBeGreaterThanOrEqual(16);
-      expect([2, 9, 23]).not.toContain(DAY(v));
+      const day = DAY(v);
+      expect(day < 16 || day > 24).toBe(true);
+      expect([2, 9, 23]).not.toContain(day);
     }
   });
 
