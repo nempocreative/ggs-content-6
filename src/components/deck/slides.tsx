@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } from "@/lib/content-plan";
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
-import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE } from "@/lib/ads";
-import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, promoAdWindow, type PromoKind } from "@/lib/promos";
+import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, decTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE, promoAdWindow } from "@/lib/ads";
+import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, type PromoKind } from "@/lib/promos";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
