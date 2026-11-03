@@ -1,7 +1,19 @@
 import { describe, expect, it } from "vitest";
-import { captionRules, hashtags } from "./captions";
+import { captionRules, captions, hashtags } from "./captions";
 
 const ACCOUNTS = ["beauty", "hair", "japan"] as const;
+
+// Caption harus terasa kayak ngomong langsung, bukan bahasa iklan.
+const KAKU = [
+  /sila(h|kan)/i,
+  /demikian/i,
+  /segera pesan/i,
+  /jangan sampai ketinggalan/i,
+  /special price/i,
+  /best quality/i,
+  /terima kasih atas perhatiannya/i,
+  /dengan ini/i,
+];
 
 describe("Lokal (Garut) di hashtag", () => {
   it("setiap akun selalu punya minimal 2 hashtag lokasi Garut", () => {
