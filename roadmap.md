@@ -13,4 +13,5 @@
 
 
 - [x] Alur lengkap per episode GGS Talk (hal. 27–38, tiap episode: halaman penjelasan + alur): kalimat buka, 5 tahap + pertanyaan lanjutan + kamera, kalimat nutup.
+- [x] Caption & hashtag (hal. 39–40) ditulis pakai bahasa ngobrol, bukan bahasa iklan; dicek lewat preview tanpa overflow.
 - [ ] Buat ulang PPTX & PDF dari deck terbaru (41 slide) — menunggu konfirmasi pengguna.
