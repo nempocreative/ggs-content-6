@@ -17,9 +17,9 @@ describe("jadwal iklan", () => {
       for (const r of adSchedule(b)) expect(r.perDay).toBeGreaterThanOrEqual(50000);
     }
   });
-  it("monthly total is 13 run days per platform at Rp50.000", () => {
-    expect(monthTotal("beauty")).toBe(13 * 50000 + 13 * 50000);
-    expect(monthTotal("hair")).toBe(13 * 50000 + 13 * 50000);
+  it("monthly total is 14 run days per platform at Rp50.000", () => {
+    expect(monthTotal("beauty")).toBe(14 * 50000 + 14 * 50000);
+    expect(monthTotal("hair")).toBe(14 * 50000 + 14 * 50000);
   });
   it("states that the budget is before tax", () => {
     expect(TAX_NOTE).toBe("belum termasuk pajak");
