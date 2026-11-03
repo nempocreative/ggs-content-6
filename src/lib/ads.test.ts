@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { adSchedule, monthTotal } from "./ads";
+import { adSchedule, adRules, monthTotal, PER_DAY, TAX_NOTE } from "./ads";
 
 describe("jadwal iklan", () => {
   it("each brand runs Instagram and TikTok every one of the 4 weeks", () => {
@@ -10,7 +10,19 @@ describe("jadwal iklan", () => {
       }
     }
   });
-  it("monthly total equals the sum of each row", () => {
-    expect(monthTotal("beauty")).toBe(4 * 30000 * 3 + 4 * 25000 * 3 + 30000 + 25000);
+  it("never runs below the Rp50.000 a day floor on either platform", () => {
+    expect(PER_DAY.Instagram).toBe(50000);
+    expect(PER_DAY.TikTok).toBe(50000);
+    for (const b of ["beauty", "hair"] as const) {
+      for (const r of adSchedule(b)) expect(r.perDay).toBeGreaterThanOrEqual(50000);
+    }
+  });
+  it("monthly total is 13 run days per platform at Rp50.000", () => {
+    expect(monthTotal("beauty")).toBe(13 * 50000 + 13 * 50000);
+    expect(monthTotal("hair")).toBe(13 * 50000 + 13 * 50000);
+  });
+  it("states that the budget is before tax", () => {
+    expect(TAX_NOTE).toBe("belum termasuk pajak");
+    expect(adRules.some((r) => /pajak/i.test(r))).toBe(true);
   });
 });

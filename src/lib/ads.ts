@@ -11,9 +11,11 @@ export type AdRow = {
   perDay: number; // IDR per day
 };
 
-// Default budget per day (IDR) — placeholder until the owner sets real numbers.
-const IG = 30000;
-const TT = 25000;
+// Budget per hari (IDR) — minimal jalan Rp50.000 per platform, angka belum termasuk pajak.
+const IG = 50000;
+const TT = 50000;
+export const PER_DAY: Record<Platform, number> = { Instagram: IG, TikTok: TT };
+export const TAX_NOTE = "belum termasuk pajak";
 
 const plan: Record<Brand, Omit<AdRow, "week" | "perDay">[][]> = {
   beauty: [
@@ -77,4 +79,5 @@ export const adRules = [
   "Mulai jalan sore (16:00) — jam orang buka HP & chat.",
   "Setelah 2 hari, kalau biaya per chat mahal, matikan & ganti post.",
   "Tombol iklan selalu ke WhatsApp booking.",
+  "Anggaran minimal Rp50.000 per hari per platform — semua angka di sini belum termasuk pajak.",
 ];
