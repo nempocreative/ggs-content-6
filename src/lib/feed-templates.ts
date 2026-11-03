@@ -136,7 +136,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Cerita di balik nail art", "Ngobrol santai sore Garut", "Tonton di YouTube & Spotify"],
     cta: "Dengerin sekarang",
     badge: "PODCAST",
-    footer: "GGS Talk • Nempo.id",
+    footer: "GGS Talk",
     dark: false,
   },
   {
