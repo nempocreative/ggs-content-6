@@ -21,4 +21,5 @@
 - [x] Tambah halaman Program Promo (hal. 46–47): promo rutin, bulanan, momen & konten beserta aturan main; dicek lewat preview tanpa overflow.
 - [x] Buat ulang PPTX & PDF versi v3 (48 slide) termasuk halaman Program Promo.
 - [x] Tambah kalender promo bertanggal Nov–Des 2026 untuk cewek (hal. 48) dan versi cowok/barber dengan tanggal yang sama (hal. 49); dicek lewat preview tanpa overflow.
-- [ ] Perluas kalender promo sampai akhir bulan / akhir tahun sesuai permintaan berikutnya, lalu buat ulang PPTX & PDF kalau diminta.
+- [x] Hubungkan tiap promo bertanggal dengan jadwal iklan IG + TikTok (kolom "Iklan IG + TikTok" di hal. 48–49; iklan jalan 3 hari sebelum sampai hari H), jadwal mingguan hal. 44–45 ikut disesuaikan.
+- [x] Buat ulang PPTX & PDF versi v4 (50 slide) — termasuk kalender promo cewek (hal. 48) & cowok (hal. 49) yang sudah ada kolom iklannya; semua halaman dicek satu-satu dari file PDF jadi.
