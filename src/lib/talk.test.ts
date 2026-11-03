@@ -54,7 +54,6 @@ describe("Acuan GGS Talk", () => {
   });
 });
 
-import { episodeFlow } from "./talk";
 test("every aired episode has its own 5-step flow from buka to nutup", () => {
   for (const b of ["beauty", "hair"] as const)
     for (const e of talkEpisodes[b]) {
@@ -64,7 +63,6 @@ test("every aired episode has its own 5-step flow from buka to nutup", () => {
     }
 });
 
-import { episodeDetail } from "./talk";
 test("every aired episode has a full rundown with its own opening, follow-ups and closing", () => {
   for (const b of ["beauty", "hair"] as const)
     for (const e of talkEpisodes[b]) {
@@ -76,7 +74,6 @@ test("every aired episode has a full rundown with its own opening, follow-ups an
     }
 });
 
-import { episodeAbout } from "./talk";
 test("every aired episode has its own explanation with 3 key points", () => {
   for (const b of ["beauty", "hair"] as const)
     for (const e of talkEpisodes[b]) {
@@ -86,7 +83,6 @@ test("every aired episode has its own explanation with 3 key points", () => {
     }
 });
 
-import { talkIntro, episodeHook } from "./talk";
 test("podcast punya ciri khas opening 8 detik dengan kalimat tetap", () => {
   expect(talkIntro.catch).toBe("Sore Garut! Ngopi dulu, baru ngobrol.");
   expect(talkIntro.ritual).toHaveLength(5);
