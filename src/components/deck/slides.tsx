@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } from "@/lib/content-plan";
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
+import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah } from "@/lib/ads";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -598,6 +599,58 @@ function CaptionSlide({ brand, num }: { brand: Brand; num: number }) {
   );
 }
 
+
+// ---- Ads schedule ----
+function AdSlide({ brand, num }: { brand: Brand; num: number }) {
+  const b = brand === "beauty";
+  const accent = b ? "text-ggs-pink" : "text-ggs-gold";
+  const ink = b ? "text-ggs-ink" : "text-primary-foreground";
+  const muted = b ? "text-ggs-gray" : "text-primary-foreground/65";
+  const line = b ? "border-border" : "border-primary-foreground/15";
+  const chip = b ? "bg-ggs-pink-soft text-ggs-pink" : "bg-ggs-gold-soft text-ggs-ink";
+  const rows = adSchedule(brand);
+  return (
+    <Stage dark={!b}>
+      <div className="absolute top-[42px] left-[64px]">
+        <Kicker color={b ? "pink" : "gold"}>{b ? "GGS BEAUTY" : "GGS HAIR STUDIO"} • JADWAL IKLAN</Kicker>
+      </div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>Iklan Instagram & TikTok</h2>
+      <div className="absolute top-[160px] left-[64px] w-[800px]">
+        <div className={`grid grid-cols-[150px_96px_1fr_130px_90px_100px] gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
+          <div>Minggu</div><div>Platform</div><div>Post yang diiklankan</div><div>Tujuan</div><div>Hari</div><div className="text-right">Biaya</div>
+        </div>
+        {rows.map((r, i) => (
+          <div key={i} className={`grid h-[50px] grid-cols-[150px_96px_1fr_130px_90px_100px] items-center gap-3 border-b text-[13px] ${line}`}>
+            <div className={`font-bold ${accent}`}>{i % 2 === 0 ? adWeekLabel(r.week) : ""}</div>
+            <div><span className={`rounded px-2 py-[3px] text-[11.5px] font-bold ${chip}`}>{r.platform}</span></div>
+            <div className={`font-bold ${ink}`}>{r.boost}</div>
+            <div className={muted}>{r.goal}</div>
+            <div className={muted}>{r.days}</div>
+            <div className={`text-right ${ink}`}>{rupiah(rowTotal(r))}</div>
+          </div>
+        ))}
+        <div className={`flex justify-between pt-3 text-[15px] font-bold ${ink}`}>
+          <span>Total sebulan</span><span className={accent}>{rupiah(monthTotal(brand))}</span>
+        </div>
+      </div>
+      <div className="absolute top-[160px] left-[904px] w-[312px] space-y-4">
+        <div>
+          <div className={`mb-1.5 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Target penonton</div>
+          <ul className={`space-y-1 text-[13px] ${ink}`}>{adTargeting[brand].map((t) => <li key={t}>• {t}</li>)}</ul>
+        </div>
+        <div>
+          <div className={`mb-1.5 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Biaya per hari</div>
+          <div className={`text-[13px] ${ink}`}>Instagram Rp30.000 • TikTok Rp25.000</div>
+        </div>
+        <ul className={`space-y-1.5 border-t pt-3 text-[12px] leading-[1.35] ${line} ${muted}`}>
+          {adRules.map((r) => <li key={r}>• {r}</li>)}
+        </ul>
+      </div>
+      <Footer n={num} dark={!b} />
+    </Stage>
+  );
+}
+
 // ---- Hook guide ----
 function HookSlide({ brand, num }: { brand: Brand; num: number }) {
   const b = brand === "beauty";
@@ -1026,6 +1079,8 @@ export const slides: { id: string; el: () => ReactNode }[] = [
   { id: "talk-hook-hair", el: () => <TalkHookSlide brand="hair" num={41} /> },
   { id: "caption-beauty", el: () => <CaptionSlide brand="beauty" num={42} /> },
   { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={43} /> },
+  { id: "ads-beauty", el: () => <AdSlide brand="beauty" num={44} /> },
+  { id: "ads-hair", el: () => <AdSlide brand="hair" num={45} /> },
 
   { id: "closing", el: ClosingSlide },
 ];
