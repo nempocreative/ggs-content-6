@@ -35,7 +35,7 @@ describe("program promo", () => {
   });
 });
 
-import { promoCalendar } from "@/lib/promos";
+import { hairPromoCalendar, promoCalendar } from "@/lib/promos";
 describe("kalender promo sampai akhir tahun", () => {
   it("mencakup gajian, Hari Ibu, Natal, dan tahun baru", () => {
     const names = promoCalendar.map((p) => p.occasion + p.name).join(" ");
@@ -43,5 +43,23 @@ describe("kalender promo sampai akhir tahun", () => {
   });
   it("hanya November dan Desember", () => {
     expect(promoCalendar.every((p) => p.month === "Nov" || p.month === "Des")).toBe(true);
+  });
+});
+
+describe("kalender promo cowok", () => {
+  it("tanggalnya sama persis dengan kalender cewek", () => {
+    expect(hairPromoCalendar.map((p) => p.date)).toEqual(promoCalendar.map((p) => p.date));
+  });
+  it("isinya layanan barber, bukan layanan beauty", () => {
+    const text = hairPromoCalendar.map((p) => p.name + p.detail).join(" ").toLowerCase();
+    for (const k of ["potong", "creambath", "pijat kepala", "paket"]) expect(text).toContain(k);
+    for (const k of ["nail art", "lash", "makeup", "hair spa"]) expect(text).not.toContain(k);
+  });
+  it("tiap baris punya tanggal, nama, dan detail", () => {
+    for (const p of hairPromoCalendar) {
+      expect(p.date.trim()).not.toBe("");
+      expect(p.name.trim()).not.toBe("");
+      expect(p.detail.trim()).not.toBe("");
+    }
   });
 });

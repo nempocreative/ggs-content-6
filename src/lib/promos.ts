@@ -116,3 +116,20 @@ export const promoCalendar: DatedPromo[] = [
   { month: "Des", date: "25 Des – 2 Jan", name: "Gajian + THR Natal", occasion: "Gajian Desember", detail: "Gift card GGS untuk kado — beli Rp200.000 dapat Rp225.000." },
   { month: "Des", date: "28–31 Des", name: "New Year Ready", occasion: "Malam tahun baru", detail: "Paket glam: makeup + hairdo + nail, booking wajib DP." },
 ];
+
+// Versi cowok (GGS Hair Studio) — tanggal sama, isinya layanan barber.
+// Nama layanan diambil dari katalog: Potong Dewasa/Anak & Pelajar, Creambath,
+// Pijat Kepala, Facial, Perming, Keratin, Colouring, Highlight, Paket G/GP/GPS/GPSS.
+export const hairPromoCalendar: DatedPromo[] = [
+  { month: "Nov", date: "10 Nov", name: "Pahlawan Rapi", occasion: "Hari Pahlawan", detail: "Potong Dewasa + Pijat Kepala 15 menit diskon 10% buat guru, nakes, TNI/Polri — tunjukkan kartu." },
+  { month: "Nov", date: "11 Nov", name: "11.11 Ganteng", occasion: "Tanggal kembar", detail: "Diskon 11% semua Paket Ekonomis (G, GP, GPS, GPSS), kuota 11 slot." },
+  { month: "Nov", date: "25 Nov", name: "Guru Rapi", occasion: "Hari Guru", detail: "Guru: Potong Dewasa plus Creambath 30 menit, harga khusus — tunjukkan kartu." },
+  { month: "Nov", date: "25 Nov – 2 Des", name: "Gajian Ganteng", occasion: "Tanggal gajian", detail: "Bundle hemat: Paket GPS atau GPSS plus Potong Kumis/Jenggot." },
+  { month: "Des", date: "1–11 Des", name: "Booking Slot Natal", occasion: "Persiapan liburan", detail: "DP lebih awal buat slot Natal & tahun baru, potongan Rp25.000." },
+  { month: "Des", date: "12 Des", name: "12.12 Ganti Warna", occasion: "Harbolnas", detail: "Colouring atau Highlight (no bleaching/bleaching) diskon terbesar, voucher sampai Januari." },
+  { month: "Des", date: "15–31 Des", name: "Pelajar Rapi", occasion: "Libur sekolah", detail: "Potong Anak & Pelajar plus Keramas hemat, show kartu pelajar." },
+  { month: "Des", date: "22 Des", name: "Bapak & Anak Rapi", occasion: "Hari Ibu", detail: "Bapak + anak potong bareng: anak diskon 30%, plus foto bareng." },
+  { month: "Des", date: "24–26 Des", name: "Christmas Cut", occasion: "Natal & cuti bersama", detail: "Potong + styling + Creambath, jam buka diperpanjang pas cuti bersama." },
+  { month: "Des", date: "25 Des – 2 Jan", name: "THR Ganteng", occasion: "Gajian Desember", detail: "Gift card buat kado — beli Rp200.000 dapat Rp225.000." },
+  { month: "Des", date: "28–31 Des", name: "New Year Fresh", occasion: "Malam tahun baru", detail: "Paket habis kerja: Potong + Facial 15 menit + Pijat Kepala, booking wajib DP." },
+];
