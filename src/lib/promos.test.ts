@@ -34,3 +34,14 @@ describe("program promo", () => {
     expect(promoRules.some((r) => r.includes("belum") || r.includes("usulan"))).toBe(true);
   });
 });
+
+import { promoCalendar } from "@/lib/promos";
+describe("kalender promo sampai akhir tahun", () => {
+  it("mencakup gajian, Hari Ibu, Natal, dan tahun baru", () => {
+    const names = promoCalendar.map((p) => p.occasion + p.name).join(" ");
+    for (const k of ["gajian", "Hari Ibu", "Natal", "tahun baru"]) expect(names.toLowerCase()).toContain(k.toLowerCase());
+  });
+  it("hanya November dan Desember", () => {
+    expect(promoCalendar.every((p) => p.month === "Nov" || p.month === "Des")).toBe(true);
+  });
+});
