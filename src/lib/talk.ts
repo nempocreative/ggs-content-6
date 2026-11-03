@@ -200,3 +200,60 @@ export function episodeFlow(e: TalkEpisode): EpisodeStep[] {
   const f = FLOWS[e.topic] ?? genericFlow(e);
   return f.map(([q, note], i) => ({ t: STEPS[i] ?? "", name: NAMES[i] ?? "", q, note }));
 }
+
+// ---- Alur lengkap per episode: kalimat buka, tiap tahap ada pertanyaan lanjutan & shot, lalu kalimat nutup ----
+export type EpisodeStepDetail = EpisodeStep & { follow: string[]; shot: string };
+export type EpisodeDetail = { open: string; steps: EpisodeStepDetail[]; close: string };
+
+type Extra = { open: string; follow: [string, string][]; shot: string[]; close: string };
+
+const EXTRA: Record<string, Extra> = {
+  "Cerita di balik nail art": {
+    open: "Sore Garut! Hari ini kita ngobrol sama orang yang tiap hari megang kuku orang — nail artist GGS.",
+    follow: [
+      ["Waktu itu deg-degan nggak?", "Hasilnya sekarang kalau dilihat lagi gimana?"],
+      ["Kegagalan paling parah yang masih diinget?", "Kapan mulai yakin ini jadi kerjaan?"],
+      ["Bagian mana yang paling lama?", "Kenapa nggak bisa dipercepat?"],
+      ["Gimana cara kamu bilang 'ini nggak bisa'?", "Kebiasaan apa yang bikin kuku cepat rusak?"],
+      ["Warna apa yang aman buat pertama kali?", "Model apa yang lagi banyak diminta bulan ini?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: tangan, alat, botol cat eye",
+      "Reaksi host — kandidat klip 2",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Yang penasaran mau coba, langsung booking di GGS Beauty. Jumat depan kita ngopi sore lagi, ya!",
+  },
+};
+
+function genericExtra(e: TalkEpisode): Extra {
+  return {
+    open: `Sore Garut! Hari ini kita ngobrol soal ${e.topic.toLowerCase()} bareng ${e.guest.toLowerCase()} GGS.`,
+    follow: [
+      ["Kenapa topik ini penting buat kamu?", "Pelanggan biasanya nanya apa duluan?"],
+      ["Waktu itu rasanya gimana?", "Apa yang berubah sejak itu?"],
+      ["Bagian mana yang paling lama?", "Kenapa nggak bisa dilewati?"],
+      ["Gimana kamu jelasin ke pelanggan?", "Satu tips yang bisa dicoba di rumah?"],
+      ["Kapan waktu paling pas buat coba?", "Pesan buat yang masih ragu?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: alat, produk, hasil",
+      "Reaksi host — kandidat klip",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Mau coba? Langsung booking di GGS. Jumat depan kita ngopi sore lagi, ya!",
+  };
+}
+
+export function episodeDetail(e: TalkEpisode): EpisodeDetail {
+  const x = EXTRA[e.topic] ?? genericExtra(e);
+  return {
+    open: x.open,
+    close: x.close,
+    steps: episodeFlow(e).map((s, i) => ({ ...s, follow: x.follow[i] ?? [], shot: x.shot[i] ?? "" })),
+  };
+}
