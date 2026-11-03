@@ -3,7 +3,7 @@ import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } fr
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
-import { episodeAbout, episodeDetail, episodeFlow, talkClips, talkEpisodes, talkFlow, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
+import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
 import logoBeauty from "@/assets/ggs-beauty-logo.jpg";
 import logoHair from "@/assets/ggs-hair-studio-logo.png";
@@ -879,6 +879,114 @@ function TalkAboutSlide({ brand, idx, num }: { brand: Brand; idx: number; num: n
   );
 }
 
+// ---- Ciri khas opening podcast: ritual 8 detik + kalimat tetap ----
+function TalkIntroSlide({ num }: { num: number }) {
+  const ink = "text-ggs-ink";
+  const muted = "text-ggs-gray";
+  const line = "border-border";
+  return (
+    <Stage>
+      <div className="absolute top-[42px] left-[64px]">
+        <Kicker color="pink">GGS BEAUTY × GGS HAIR STUDIO • CIRI KHAS OPENING</Kicker>
+      </div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>Opening yang Bikin Dikenal</h2>
+      <div className={`absolute top-[134px] left-[64px] w-[1152px] text-[13.5px] ${muted}`}>
+        Delapan detik pertama yang selalu sama di tiap episode — orang tahu ini Ngopi Sore bahkan sebelum lihat logo.
+      </div>
+      <div className="absolute top-[176px] left-[64px] w-[1152px] rounded-md bg-ggs-pink-soft px-5 py-4">
+        <div className="text-[11px] font-bold tracking-[0.12em] uppercase text-ggs-ink/70">Kalimat tetap — diucapin persis begini tiap episode</div>
+        <div className="mt-1 text-[26px] font-bold italic leading-[1.3] text-ggs-ink" style={HEAD}>“{talkIntro.catch}”</div>
+      </div>
+      <div className="absolute top-[300px] left-[64px] w-[760px]">
+        <div className={`mb-1.5 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Ritual 8 detik — urut, jangan diacak</div>
+        <ol>
+          {talkIntro.ritual.map((s) => (
+            <li key={s.t} className={`grid grid-cols-[86px_1fr] items-baseline gap-4 border-b ${line} py-[9px] last:border-b-0`}>
+              <span className="text-[12.5px] font-bold text-ggs-pink" style={HEAD}>{s.t}</span>
+              <span className={`text-[14px] leading-[1.35] ${ink}`}>{s.do}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className="absolute top-[536px] left-[64px] w-[760px] rounded-md bg-ggs-gold-soft px-4 py-2.5">
+        <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-ggs-ink/70">Penutup khas — </span>
+        <span className="text-[13.5px] text-ggs-ink">{talkIntro.sign}</span>
+      </div>
+      <div className="absolute top-[300px] left-[864px] w-[352px] space-y-2.5">
+        <div>
+          <div className={`mb-1 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Suara</div>
+          <div className={`text-[13px] leading-[1.35] ${ink}`}>{talkIntro.sound}</div>
+        </div>
+        <div className={`border-t ${line} pt-2`}>
+          <div className={`mb-1 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Visual</div>
+          <div className={`text-[13px] leading-[1.35] ${ink}`}>{talkIntro.visual}</div>
+        </div>
+        <div className={`border-t ${line} pt-2`}>
+          <div className={`mb-1 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Aturan opening</div>
+          <ul className="space-y-1 text-[12px] leading-[1.3]">
+            {talkIntro.rules.map((r) => <li key={r} className={muted}>• {r}</li>)}
+          </ul>
+        </div>
+      </div>
+      <Footer n={num} />
+    </Stage>
+  );
+}
+
+// ---- Hook 3 detik pertama per klip episode ----
+function TalkHookSlide({ brand, num }: { brand: Brand; num: number }) {
+  const b = brand === "beauty";
+  const accent = b ? "text-ggs-pink" : "text-ggs-gold";
+  const ink = b ? "text-ggs-ink" : "text-primary-foreground";
+  const muted = b ? "text-ggs-gray" : "text-primary-foreground/65";
+  const line = b ? "border-border" : "border-primary-foreground/15";
+  const panel = b ? "bg-ggs-pink-soft" : "bg-ggs-gold-soft";
+  return (
+    <Stage dark={!b}>
+      <div className="absolute top-[42px] left-[64px]">
+        <Kicker color={b ? "pink" : "gold"}>{b ? "GGS BEAUTY" : "GGS HAIR STUDIO"} • HOOK AWAL VIDEO PODCAST</Kicker>
+      </div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>3 Detik Pertama Klip</h2>
+      <div className={`absolute top-[134px] left-[64px] w-[1152px] text-[13.5px] ${muted}`}>
+        Satu klip satu hook — ucapin di 3 detik pertama, sebelum judul muncul.
+      </div>
+      <div className="absolute top-[176px] left-[64px] grid w-[1152px] grid-cols-3 gap-5">
+        {talkEpisodes[brand].map((e) => {
+          const h = episodeHook(e);
+          const rows = [
+            ["Klip 1 — jawaban jujur", h.klip1],
+            ["Klip 2 — momen lucu", h.klip2],
+            ["Teaser — story sebelum tayang", h.teaser],
+          ] as const;
+          return (
+            <div key={e.day}>
+              <div className={`rounded-md px-3 py-2 ${panel}`}>
+                <div className="text-[11px] font-bold tracking-[0.12em] uppercase text-ggs-ink/70">{e.air} • Tamu: {e.guest}</div>
+                <div className="mt-0.5 text-[15px] font-bold leading-[1.25] text-ggs-ink" style={HEAD}>{e.topic}</div>
+              </div>
+              <ol className="mt-2">
+                {rows.map(([label, hook]) => (
+                  <li key={label} className={`border-b py-2 last:border-b-0 ${line}`}>
+                    <div className={`text-[10.5px] font-bold tracking-[0.1em] uppercase ${muted}`}>{label}</div>
+                    <div className={`mt-1 text-[14.5px] font-bold leading-[1.3] ${ink}`} style={HEAD}>{hook}</div>
+                  </li>
+                ))}
+              </ol>
+              <div className={`mt-2 border-t pt-2 text-[12px] leading-[1.3] ${line} ${muted}`}>
+                <span className={`font-bold ${accent}`}>Kamera buka: </span>{h.shot}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className={`absolute top-[596px] left-[64px] w-[1152px] border-t pt-3 text-[12.5px] leading-[1.35] ${line} ${muted}`}>
+        Hook diucapin tanpa salam dan tanpa logo — langsung kalimat, baru setelah itu “Sore Garut! Ngopi dulu, baru ngobrol.”
+      </div>
+      <Footer n={num} dark={!b} />
+    </Stage>
+  );
+}
+
 export const slides: { id: string; el: () => ReactNode }[] = [
 
   { id: "cover", el: CoverSlide },
@@ -913,8 +1021,11 @@ export const slides: { id: string; el: () => ReactNode }[] = [
       },
     ]),
   ),
-  { id: "caption-beauty", el: () => <CaptionSlide brand="beauty" num={39} /> },
-  { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={40} /> },
+  { id: "talk-intro", el: () => <TalkIntroSlide num={39} /> },
+  { id: "talk-hook-beauty", el: () => <TalkHookSlide brand="beauty" num={40} /> },
+  { id: "talk-hook-hair", el: () => <TalkHookSlide brand="hair" num={41} /> },
+  { id: "caption-beauty", el: () => <CaptionSlide brand="beauty" num={42} /> },
+  { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={43} /> },
 
   { id: "closing", el: ClosingSlide },
 ];

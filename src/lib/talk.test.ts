@@ -74,3 +74,32 @@ test("every aired episode has its own explanation with 3 key points", () => {
       expect(a.poin).toHaveLength(3);
     }
 });
+
+import { talkIntro, episodeHook } from "./talk";
+test("podcast punya ciri khas opening 8 detik dengan kalimat tetap", () => {
+  expect(talkIntro.catch).toBe("Sore Garut! Ngopi dulu, baru ngobrol.");
+  expect(talkIntro.ritual).toHaveLength(5);
+  expect(talkIntro.ritual[0]!.t).toBe("0–1 dtk");
+  expect(talkIntro.ritual[4]!.t).toBe("7–8 dtk");
+  expect(talkIntro.sound).toMatch(/tanpa jingle/i);
+  expect(talkIntro.rules.some((r) => /cangkir/i.test(r))).toBe(true);
+  expect(talkIntro.rules.some((r) => /8 detik/i.test(r))).toBe(true);
+  expect(talkIntro.sign).toMatch(/ngopi sore lagi/i);
+});
+
+test("tiap episode punya 3 hook klip sendiri, cukup pendek buat 3 detik", () => {
+  const seen = new Set<string>();
+  for (const b of ["beauty", "hair"] as const)
+    for (const e of talkEpisodes[b]) {
+      const h = episodeHook(e);
+      for (const line of [h.klip1, h.klip2, h.teaser]) {
+        expect(line.length).toBeLessThanOrEqual(68);
+        expect(seen.has(line)).toBe(false);
+        seen.add(line);
+      }
+      expect(h.shot.length).toBeGreaterThan(0);
+    }
+  const text = [...seen].join(" | ");
+  expect(text).not.toMatch(/Rp\s?\d/);
+  expect(text).not.toMatch(/menyembuhkan|penyakit|detox|dijamin|pasti awet/i);
+});

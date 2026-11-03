@@ -407,3 +407,93 @@ export function episodeAbout(e: TalkEpisode): EpisodeAbout {
     }
   );
 }
+
+// ---- Ciri khas opening: 8 detik pertama yang selalu sama, biar episode langsung dikenalin ----
+export type TalkIntroStep = { t: string; do: string };
+export type TalkIntro = {
+  name: string;
+  catch: string;
+  ritual: TalkIntroStep[];
+  sound: string;
+  visual: string;
+  rules: string[];
+  sign: string;
+};
+
+export const talkIntro: TalkIntro = {
+  name: "Ngopi Sore",
+  catch: "Sore Garut! Ngopi dulu, baru ngobrol.",
+  ritual: [
+    { t: "0–1 dtk", do: "Kopi dituang ke cangkir. Close-up tangan, belum kelihatan muka siapa pun." },
+    { t: "1–3 dtk", do: "Host nyodorin cangkir ke kamera sambil bilang: \"Ngopi dulu.\"" },
+    { t: "3–5 dtk", do: "Kalimat tetap: \"Sore Garut! Ngopi dulu, baru ngobrol.\"" },
+    { t: "5–7 dtk", do: "Cangkir tamu ditaruh di meja, kartu topik ditulis tangan di sebelahnya." },
+    { t: "7–8 dtk", do: "Judul episode muncul, tamu nyeruput kopi — obrolan langsung jalan." },
+  ],
+  sound: "Suara asli: kopi dituang, es batu berderak, cangkir kena tatakan. Tanpa jingle, tanpa musik.",
+  visual: "Meja kayu, dua cangkir, kartu topik tulisan tangan. Jam nunjukin 16:00 kelihatan samar di background.",
+  rules: [
+    "Mulai dari cangkir — bukan dari logo, bukan dari muka host.",
+    "Kalimat tetapnya sama persis tiap episode, jangan diganti-ganti.",
+    "Opening maksimal 8 detik; lewat itu potong, langsung ke cerita.",
+    "Tamu selalu nyeruput kopi dulu sebelum jawab pertanyaan pertama.",
+    "Judul ditulis tangan di kartu, bukan teks animasi dari editor.",
+  ],
+  sign: "Penutup khas: cangkir kosong di tangan host — \"Udah habis kopinya. Jumat depan ngopi sore lagi, ya!\"",
+};
+
+// ---- Hook awal video per episode: 3 detik pertama klip, diucapin sebelum judul muncul ----
+export type EpisodeHook = { klip1: string; klip2: string; teaser: string; shot: string };
+
+const HOOKS: Record<string, EpisodeHook> = {
+  "Cerita di balik nail art": {
+    klip1: "Kuku secantik ini lewat 7 tahap, lho.",
+    klip2: "Request kuku paling aneh yang pernah kamu dapat?",
+    teaser: "Cat eye itu lama, ini alasannya.",
+    shot: "Insert: kuas cat eye + lampu UV dekat kamera",
+  },
+  "Self care itu bukan kemewahan": {
+    klip1: "Self care itu bukan soal uang.",
+    klip2: "Ada pelanggan yang ketiduran di kursi ini?",
+    teaser: "Sejam seminggu buat diri sendiri, worth it?",
+    shot: "Insert: masker wajah + tangan terapis",
+  },
+  "Rambut berwarna, rawat bagaimana?": {
+    klip1: "Warna cepat pudar? Biasanya salah di sini.",
+    klip2: "Bawa foto artis, hasilnya kok beda?",
+    teaser: "Sebelum warnain, ini yang dicek dulu.",
+    shot: "Insert: palet warna + rambut dibilas",
+  },
+  "Perming di rambut pria": {
+    klip1: "Cowok perming — aneh atau udah biasa?",
+    klip2: "Hari pertama habis perming, jangan lakuin ini.",
+    teaser: "Perming cowok bisa natural? Ini caranya.",
+    shot: "Insert: roller perming di kepala",
+  },
+  "Kenapa Paket GPS banyak diambil": {
+    klip1: "30 menit, empat layanan, satu paket.",
+    klip2: "Siapa yang paling sering ketiduran?",
+    teaser: "Ganteng Pisan Sob — isinya apa aja?",
+    shot: "Insert: creambath + pijat kepala-bahu",
+  },
+  "Warna rambut pria, mulai dari mana": {
+    klip1: "Cowok mau warnain rambut? Mulai dari sini.",
+    klip2: "Mitos warna rambut cowok yang paling lucu apa?",
+    teaser: "Bisa warna tanpa bleaching? Ini batasnya.",
+    shot: "Insert: kuas colouring + sebelum-sesudah",
+  },
+};
+
+function genericHook(e: TalkEpisode): EpisodeHook {
+  const t = e.topic.toLowerCase();
+  return {
+    klip1: `${t}? Ini jawabannya.`,
+    klip2: `Yang bikin ragu soal ${t} itu apa?`,
+    teaser: `Jumat ini kita ngobrol soal ${t}.`,
+    shot: "Insert: alat atau produk layanan",
+  };
+}
+
+export function episodeHook(e: TalkEpisode): EpisodeHook {
+  return HOOKS[e.topic] ?? genericHook(e);
+}
