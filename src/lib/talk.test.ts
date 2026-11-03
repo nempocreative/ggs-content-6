@@ -1,5 +1,16 @@
-import { describe, expect, it } from "vitest";
-import { talkEpisodes, talkQuestions, talkRules, talkFlow, talkClips } from "./talk";
+import { describe, expect, it, test } from "vitest";
+import {
+  talkEpisodes,
+  talkQuestions,
+  talkRules,
+  talkFlow,
+  talkClips,
+  episodeFlow,
+  episodeDetail,
+  episodeAbout,
+  episodeHook,
+  talkIntro,
+} from "./talk";
 import { PODCAST_DAYS } from "./schedule";
 
 const flat = (brand: "beauty" | "hair") => talkQuestions[brand].flatMap((g) => g.items);
