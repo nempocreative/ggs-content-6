@@ -3,6 +3,7 @@ import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } fr
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE } from "@/lib/ads";
+import { KIND_LABEL, promosByKind, promoRules, type PromoKind } from "@/lib/promos";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -648,6 +649,81 @@ function AdSlide({ brand, num }: { brand: Brand; num: number }) {
         </ul>
       </div>
       <Footer n={num} dark={!b} />
+      </Stage>
+  );
+}
+
+// ---- Program promo ----
+function PromoSlide({
+  num,
+  groups,
+  title,
+  side,
+  dark,
+}: {
+  num: number;
+  groups: PromoKind[];
+  title: string;
+  side: "why" | "rules";
+  dark: boolean;
+}) {
+  const accent = dark ? "text-ggs-gold" : "text-ggs-pink";
+  const ink = dark ? "text-primary-foreground" : "text-ggs-ink";
+  const muted = dark ? "text-primary-foreground/65" : "text-ggs-gray";
+  const line = dark ? "border-primary-foreground/15" : "border-border";
+  const chip = dark ? "bg-ggs-gold-soft text-ggs-ink" : "bg-ggs-pink-soft text-ggs-pink";
+  const rows = groups.flatMap((k) => promosByKind(k).map((p, i) => ({ p, label: i === 0 ? KIND_LABEL[k] : "" })));
+  return (
+    <Stage dark={dark}>
+      <div className="absolute top-[42px] left-[64px]">
+        <Kicker color={dark ? "gold" : "pink"}>GGS • PROGRAM PROMO</Kicker>
+      </div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>{title}</h2>
+      <div className="absolute top-[160px] left-[64px] w-[800px]">
+        <div className={`grid grid-cols-[190px_150px_240px_1fr] gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
+          <div>Kategori</div><div>Nama promo</div><div>Kapan jalan</div><div>Detail</div>
+        </div>
+        {rows.map(({ p, label }, i) => (
+          <div key={i} className={`grid grid-cols-[190px_150px_240px_1fr] items-center gap-3 border-b py-[10px] text-[13px] leading-[1.3] ${line}`}>
+            <div>
+              {label ? (
+                <span className={`rounded px-2 py-[3px] text-[11.5px] font-bold ${chip}`}>{label}</span>
+              ) : null}
+            </div>
+            <div className={`font-bold ${ink}`}>{p.name}</div>
+            <div className={muted}>{p.when}</div>
+            <div className={muted}>{p.detail}</div>
+          </div>
+        ))}
+      </div>
+      <div className="absolute top-[160px] left-[904px] w-[312px] space-y-4">
+        {side === "why" ? (
+          <>
+            <div>
+              <div className={`mb-1.5 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Kenapa perlu promo</div>
+              <ul className={`space-y-2 text-[13px] leading-[1.35] ${ink}`}>
+                <li>• Bikin kursi kosong di jam sepi jadi keisi.</li>
+                <li>• Pelanggan lama diajak balik lewat stamp card & birthday treat.</li>
+                <li>• Bahan post & story mingguan — nyambung dengan jadwal konten.</li>
+                <li>• Kuis episode bikin podcast GGS Talk ditonton lebih banyak.</li>
+              </ul>
+            </div>
+            <div className={`border-t pt-3 text-[12px] leading-[1.4] ${line} ${muted}`}>
+              Semua diskon masih <span className={`font-bold ${accent}`}>usulan</span> — finalkan angkanya dulu sebelum dipakai.
+            </div>
+          </>
+        ) : (
+          <>
+            <div>
+              <div className={`mb-1.5 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Aturan main promo</div>
+              <ul className={`space-y-2 text-[12px] leading-[1.35] ${muted}`}>
+                {promoRules.map((r) => <li key={r}>• {r}</li>)}
+              </ul>
+            </div>
+          </>
+        )}
+      </div>
+      <Footer n={num} dark={dark} />
     </Stage>
   );
 }
@@ -1082,6 +1158,8 @@ export const slides: { id: string; el: () => ReactNode }[] = [
   { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={43} /> },
   { id: "ads-beauty", el: () => <AdSlide brand="beauty" num={44} /> },
   { id: "ads-hair", el: () => <AdSlide brand="hair" num={45} /> },
+  { id: "promo-rutin", el: () => <PromoSlide num={46} groups={["mingguan", "bulanan"]} title="Program Promo — Rutin" side="why" dark={false} /> },
+  { id: "promo-momen", el: () => <PromoSlide num={47} groups={["momen", "konten"]} title="Program Promo — Momen & Konten" side="rules" dark /> },
 
   { id: "closing", el: ClosingSlide },
 ];

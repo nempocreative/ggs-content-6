@@ -18,3 +18,5 @@
 - [x] Jadwal iklan Instagram & TikTok per akun (hal. 44–45), dicek lewat preview tanpa overflow.
 - [x] Anggaran iklan dinaikkan ke minimal Rp50.000 per hari per platform, semua angka ditulis "belum termasuk pajak" (hal. 44–45).
 - [x] Buat ulang PPTX & PDF dari deck terbaru (46 slide) — tersimpan sebagai GGS-Content-Plan_v2.
+- [x] Tambah halaman Program Promo (hal. 46–47): promo rutin, bulanan, momen & konten beserta aturan main; dicek lewat preview tanpa overflow.
+- [x] Buat ulang PPTX & PDF versi v3 (48 slide) termasuk halaman Program Promo.
