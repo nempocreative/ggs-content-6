@@ -3,7 +3,7 @@ import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } fr
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
-import { episodeDetail, episodeFlow, talkClips, talkEpisodes, talkFlow, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
+import { episodeAbout, episodeDetail, episodeFlow, talkClips, talkEpisodes, talkFlow, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
 import logoBeauty from "@/assets/ggs-beauty-logo.jpg";
 import logoHair from "@/assets/ggs-hair-studio-logo.png";
@@ -821,6 +821,64 @@ function TalkRundownSlide({ brand, idx, num }: { brand: Brand; idx: number; num:
   );
 }
 
+function TalkAboutSlide({ brand, idx, num }: { brand: Brand; idx: number; num: number }) {
+  const b = brand === "beauty";
+  const e = talkEpisodes[brand][idx]!;
+  const a = episodeAbout(e);
+  const accent = b ? "text-ggs-pink" : "text-ggs-gold";
+  const ink = b ? "text-ggs-ink" : "text-primary-foreground";
+  const muted = b ? "text-ggs-gray" : "text-primary-foreground/65";
+  const line = b ? "border-border" : "border-primary-foreground/15";
+  const panel = b ? "bg-ggs-pink-soft" : "bg-ggs-gold-soft";
+  const label = `text-[11px] font-bold tracking-[0.12em] uppercase ${accent}`;
+  return (
+    <Stage dark={!b}>
+      <div className="absolute top-[42px] left-[64px]">
+        <Kicker color={b ? "pink" : "gold"}>{b ? "GGS BEAUTY" : "GGS HAIR STUDIO"} • EPISODE {idx + 1} • {e.air} 16:00 • PENJELASAN</Kicker>
+      </div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>{e.topic}</h2>
+      <div className={`absolute top-[134px] left-[64px] w-[1152px] text-[13.5px] ${muted}`}>
+        Tamu: {e.guest} • Layanan: {e.service.split(" — ")[0]} • Baca ini dulu sebelum rekam
+      </div>
+      <div className={`absolute top-[176px] left-[64px] w-[1152px] rounded-md px-5 py-4 ${panel}`}>
+        <div className="text-[11px] font-bold tracking-[0.12em] uppercase text-ggs-ink/70">Episode ini soal apa</div>
+        <div className="mt-1 text-[17px] leading-[1.4] text-ggs-ink">{a.inti}</div>
+      </div>
+      <div className="absolute top-[296px] left-[64px] grid w-[1152px] grid-cols-2 gap-x-10 gap-y-6">
+        <div className={`border-t-2 pt-2 ${line}`}>
+          <div className={label}>Kenapa dibahas</div>
+          <div className={`mt-1.5 text-[14px] leading-[1.4] ${ink}`}>{a.kenapa}</div>
+        </div>
+        <div className={`border-t-2 pt-2 ${line}`}>
+          <div className={label}>3 poin yang harus keluar di obrolan</div>
+          <ol className="mt-1.5 space-y-1">
+            {a.poin.map((p, i) => (
+              <li key={p} className={`text-[14px] leading-[1.35] ${ink}`}>{i + 1}. {p}</li>
+            ))}
+          </ol>
+        </div>
+        <div className={`border-t-2 pt-2 ${line}`}>
+          <div className={label}>Yang perlu disiapkan</div>
+          <ul className="mt-1.5 space-y-1">
+            {a.siapkan.map((p) => (
+              <li key={p} className={`text-[14px] leading-[1.35] ${ink}`}>• {p}</li>
+            ))}
+          </ul>
+        </div>
+        <div className={`border-t-2 pt-2 ${line}`}>
+          <div className={label}>Hindari</div>
+          <ul className="mt-1.5 space-y-1">
+            {a.hindari.map((p) => (
+              <li key={p} className={`text-[14px] leading-[1.35] ${ink}`}>✕ {p}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <Footer n={num} dark={!b} />
+    </Stage>
+  );
+}
+
 export const slides: { id: string; el: () => ReactNode }[] = [
 
   { id: "cover", el: CoverSlide },
@@ -844,13 +902,19 @@ export const slides: { id: string; el: () => ReactNode }[] = [
   { id: "talk-ep-beauty", el: () => <TalkEpisodeSlide brand="beauty" num={25} /> },
   { id: "talk-ep-hair", el: () => <TalkEpisodeSlide brand="hair" num={26} /> },
   ...(["beauty", "hair"] as const).flatMap((brand, bi) =>
-    [0, 1, 2].map((idx) => ({
-      id: `rundown-${brand}-${idx + 1}`,
-      el: () => <TalkRundownSlide brand={brand} idx={idx} num={27 + bi * 3 + idx} />,
-    })),
+    [0, 1, 2].flatMap((idx) => [
+      {
+        id: `about-${brand}-${idx + 1}`,
+        el: () => <TalkAboutSlide brand={brand} idx={idx} num={27 + bi * 6 + idx * 2} />,
+      },
+      {
+        id: `rundown-${brand}-${idx + 1}`,
+        el: () => <TalkRundownSlide brand={brand} idx={idx} num={28 + bi * 6 + idx * 2} />,
+      },
+    ]),
   ),
-  { id: "caption-beauty", el: () => <CaptionSlide brand="beauty" num={33} /> },
-  { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={34} /> },
+  { id: "caption-beauty", el: () => <CaptionSlide brand="beauty" num={39} /> },
+  { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={40} /> },
 
   { id: "closing", el: ClosingSlide },
 ];

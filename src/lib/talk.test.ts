@@ -64,3 +64,13 @@ test("every aired episode has a full rundown with its own opening, follow-ups an
       expect(d.close).toMatch(/booking|konsultasi/i);
     }
 });
+
+import { episodeAbout } from "./talk";
+test("every aired episode has its own explanation with 3 key points", () => {
+  for (const b of ["beauty", "hair"] as const)
+    for (const e of talkEpisodes[b]) {
+      const a = episodeAbout(e);
+      expect(a.inti).not.toContain(e.topic.toLowerCase());
+      expect(a.poin).toHaveLength(3);
+    }
+});

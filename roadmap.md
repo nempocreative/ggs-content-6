@@ -12,5 +12,5 @@
 - [x] Buat acuan GGS Talk versi natural: owner cewek & cowok ngobrol santai ngalir, acuan utamanya bank pertanyaan keren (hal. 23–24).
 
 
-- [x] Alur lengkap per episode GGS Talk (hal. 27–32): kalimat buka, 5 tahap + pertanyaan lanjutan + kamera, kalimat nutup.
-- [ ] Buat ulang PPTX & PDF dari deck terbaru (35 slide) — menunggu konfirmasi pengguna.
+- [x] Alur lengkap per episode GGS Talk (hal. 27–38, tiap episode: halaman penjelasan + alur): kalimat buka, 5 tahap + pertanyaan lanjutan + kamera, kalimat nutup.
+- [ ] Buat ulang PPTX & PDF dari deck terbaru (41 slide) — menunggu konfirmasi pengguna.
