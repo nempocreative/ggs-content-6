@@ -16,4 +16,5 @@
 - [x] Caption & hashtag (hal. 42–43) ditulis pakai bahasa ngobrol, bukan bahasa iklan; dicek lewat preview tanpa overflow.
 - [x] Ciri khas opening podcast (hal. 39) + hook 3 detik per klip episode (hal. 40–41); dicek lewat preview tanpa overflow.
 - [x] Jadwal iklan Instagram & TikTok per akun (hal. 44–45), dicek lewat preview tanpa overflow.
-- [ ] Buat ulang PPTX & PDF dari deck terbaru (46 slide) — menunggu konfirmasi pengguna.
+- [x] Anggaran iklan dinaikkan ke minimal Rp50.000 per hari per platform, semua angka ditulis "belum termasuk pajak" (hal. 44–45).
+- [x] Buat ulang PPTX & PDF dari deck terbaru (46 slide) — tersimpan sebagai GGS-Content-Plan_v2.
