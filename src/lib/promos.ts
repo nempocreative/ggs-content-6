@@ -141,7 +141,7 @@ export const AD_LEAD_DAYS = 3;
 export function promoAdWindow(p: DatedPromo): { label: string; days: number } {
   const m = p.date.match(/^(\d+)(?:\s*[–-]\s*\d+)?\s*(Nov|Des|Jan)?/);
   const day = Number(m?.[1]);
-  const mon = MONTHS[m?.[2] ?? p.month] ?? MONTHS[p.month];
+  const mon: number = MONTHS[m?.[2] ?? p.month] ?? MONTHS[p.month] ?? 10;
   const start = new Date(2026, mon, day);
   const from = new Date(2026, mon, day - AD_LEAD_DAYS);
   const f = (d: Date) => `${d.getDate()} ${MON_NAME[d.getMonth()]}`;
