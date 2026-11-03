@@ -118,7 +118,9 @@ export const decTotal = (brand: Brand) =>
 export const decRunDays = (brand: Brand) =>
   adSchedule(brand).filter((r) => r.week >= 4).reduce((s, r) => s + runDays(r), 0);
 export const rupiah = (n: number) => "Rp" + n.toLocaleString("id-ID");
-export const adWeekLabel = (w: number) => (w < 4 ? weekRanges[w] : DEC_WEEKS[w - 4]);
+// Label pendek supaya tidak wrap di kolom "Minggu" hal. 44–45 (teks panjang memakan dua baris).
+const NOV_SHORT = ["4–10 Nov", "11–17 Nov", "18–24 Nov", "25 Nov–1 Des"];
+export const adWeekLabel = (w: number) => (w < 4 ? NOV_SHORT[w] : DEC_WEEKS[w - 4]);
 
 // Jendela iklan dalam tanggal sebenarnya — dipakai kolom "Iklan IG + TikTok" di kalender promo (hal. 48–49),
 // supaya tiap promo bertanggal jelas jendela iklannya yang mana.
