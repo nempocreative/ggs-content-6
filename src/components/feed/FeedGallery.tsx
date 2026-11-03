@@ -3,11 +3,11 @@ import { toPng } from "html-to-image";
 import { feedTemplates, templatesFor, FEED_W, FEED_H, type FeedKind } from "@/lib/feed-templates";
 import type { Brand } from "@/lib/content-plan";
 import { FeedCard } from "@/components/feed/FeedCard";
+import { FeedFrame } from "@/components/feed/FeedFrame";
 
 const HEAD = { fontFamily: "'Trebuchet MS', sans-serif" };
 
 type KindFilter = FeedKind | "semua";
-type BrandFilter = Brand | "semua";
 
 function FilterBtn({
   active,
@@ -30,8 +30,10 @@ function FilterBtn({
   );
 }
 
-function GalleryItem({ id }: { id: string }) {
-  const t = feedTemplates.find((x) => x.id === id)!;
+function GalleryItem({ id, master }: { id: string; master?: Brand }) {
+  const t = master
+    ? { id: `master-${master}`, title: "Master header & footer", brand: master }
+    : feedTemplates.find((x) => x.id === id)!;
   const ref = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState(false);
   const scale = 0.32;
@@ -59,7 +61,13 @@ function GalleryItem({ id }: { id: string }) {
         style={{ width: FEED_W * scale, height: FEED_H * scale }}
       >
         <div style={{ transform: `scale(${scale})`, transformOrigin: "top left" }}>
-          <FeedCard t={t} />
+          {master ? (
+            <FeedFrame id={t.id} brand={master}>
+              <div className="m-[72px] flex flex-1 items-center justify-center rounded-[28px] border-4 border-dashed border-ggs-gray/40 text-[40px] text-ggs-gray">Area isi konten</div>
+            </FeedFrame>
+          ) : (
+            <FeedCard t={t as (typeof feedTemplates)[number]} />
+          )}
         </div>
       </div>
       <div className="flex items-center justify-between gap-2" style={{ width: FEED_W * scale }}>
@@ -78,7 +86,7 @@ function GalleryItem({ id }: { id: string }) {
 
 export function FeedGallery() {
   const [kind, setKind] = useState<KindFilter>("semua");
-  const [brand, setBrand] = useState<BrandFilter>("semua");
+  const [brand, setBrand] = useState<Brand>("hair");
   const list = templatesFor(kind, brand);
 
   return (
@@ -91,14 +99,22 @@ export function FeedGallery() {
           Ukuran 1080 × 1440 piksel (rasio 3:4). Klik "Unduh PNG" untuk menyimpan desain siap posting.
         </p>
 
-        <div className="flex flex-wrap items-center gap-2 pt-6">
+        <div className="flex gap-2 border-b border-border pt-6">
+          {(["hair", "beauty"] as const).map((b) => (
+            <button key={b} onClick={() => setBrand(b)}
+              className={`-mb-px border-b-4 px-6 py-3 text-base font-bold ${brand === b ? "border-ggs-pink text-foreground" : "border-transparent text-muted-foreground"}`}>
+              {b === "hair" ? "Cowok — GGS Hair Studio" : "Cewek — GGS Beauty"}
+            </button>
+          ))}
+        </div>
+        <h2 className="pt-6 text-lg font-bold text-foreground">Master desain</h2>
+        <div className="pt-3"><GalleryItem key={`m-${brand}`} id="" master={brand} /></div>
+        <h2 className="pt-8 text-lg font-bold text-foreground">Desain turunan</h2>
+        <div className="flex flex-wrap items-center gap-2 pt-3">
           <FilterBtn active={kind === "semua"} onClick={() => setKind("semua")}>Semua</FilterBtn>
           <FilterBtn active={kind === "promo"} onClick={() => setKind("promo")}>Promo</FilterBtn>
           <FilterBtn active={kind === "harian"} onClick={() => setKind("harian")}>Konten Harian</FilterBtn>
           <span className="mx-2 h-6 w-px bg-border" />
-          <FilterBtn active={brand === "semua"} onClick={() => setBrand("semua")}>Dua Brand</FilterBtn>
-          <FilterBtn active={brand === "beauty"} onClick={() => setBrand("beauty")}>GGS Beauty</FilterBtn>
-          <FilterBtn active={brand === "hair"} onClick={() => setBrand("hair")}>GGS Hair Studio</FilterBtn>
         </div>
 
         <div className="flex flex-wrap gap-8 pt-8">
