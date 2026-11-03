@@ -4,6 +4,7 @@ import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, sc
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, decTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE, promoAdWindow } from "@/lib/ads";
 import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, type PromoKind } from "@/lib/promos";
+import { visitsFor, influencerRules, TIER_INFO } from "@/lib/influencer";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
