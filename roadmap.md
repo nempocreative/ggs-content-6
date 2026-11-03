@@ -15,4 +15,5 @@
 - [x] Alur lengkap per episode GGS Talk (hal. 27–38, tiap episode: halaman penjelasan + alur): kalimat buka, 5 tahap + pertanyaan lanjutan + kamera, kalimat nutup.
 - [x] Caption & hashtag (hal. 42–43) ditulis pakai bahasa ngobrol, bukan bahasa iklan; dicek lewat preview tanpa overflow.
 - [x] Ciri khas opening podcast (hal. 39) + hook 3 detik per klip episode (hal. 40–41); dicek lewat preview tanpa overflow.
-- [ ] Buat ulang PPTX & PDF dari deck terbaru (44 slide) — menunggu konfirmasi pengguna.
+- [x] Jadwal iklan Instagram & TikTok per akun (hal. 44–45), dicek lewat preview tanpa overflow.
+- [ ] Buat ulang PPTX & PDF dari deck terbaru (46 slide) — menunggu konfirmasi pengguna.
