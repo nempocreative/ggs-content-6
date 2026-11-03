@@ -71,7 +71,7 @@ function GalleryItem({ id, master }: { id: string; master?: Brand }) {
         </div>
       </div>
       <div className="flex items-center justify-between gap-2" style={{ width: FEED_W * scale }}>
-        <div className="text-sm font-medium text-foreground">{t.title}</div>
+        <span />
         <button
           onClick={download}
           disabled={busy}
@@ -95,9 +95,6 @@ export function FeedGallery() {
         <h1 className="text-3xl font-black text-foreground" style={HEAD}>
           Desain Feed Instagram GGS
         </h1>
-        <p className="pt-2 text-muted-foreground">
-          Ukuran 1080 × 1440 piksel (rasio 3:4). Klik "Unduh PNG" untuk menyimpan desain siap posting.
-        </p>
 
         <div className="flex gap-2 border-b border-border pt-6">
           {(["hair", "beauty"] as const).map((b) => (
@@ -107,21 +104,7 @@ export function FeedGallery() {
             </button>
           ))}
         </div>
-        <h2 className="pt-6 text-lg font-bold text-foreground">Master desain</h2>
         <div className="pt-3"><GalleryItem key={`m-${brand}`} id="" master={brand} /></div>
-        <h2 className="pt-8 text-lg font-bold text-foreground">Desain turunan</h2>
-        <div className="flex flex-wrap items-center gap-2 pt-3">
-          <FilterBtn active={kind === "semua"} onClick={() => setKind("semua")}>Semua</FilterBtn>
-          <FilterBtn active={kind === "promo"} onClick={() => setKind("promo")}>Promo</FilterBtn>
-          <FilterBtn active={kind === "harian"} onClick={() => setKind("harian")}>Konten Harian</FilterBtn>
-          <span className="mx-2 h-6 w-px bg-border" />
-        </div>
-
-        <div className="flex flex-wrap gap-8 pt-8">
-          {list.map((t) => (
-            <GalleryItem key={t.id} id={t.id} />
-          ))}
-        </div>
       </div>
     </div>
   );
