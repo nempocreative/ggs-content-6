@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } from "@/lib/content-plan";
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
-import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah } from "@/lib/ads";
+import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE } from "@/lib/ads";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -630,7 +630,7 @@ function AdSlide({ brand, num }: { brand: Brand; num: number }) {
           </div>
         ))}
         <div className={`flex justify-between pt-3 text-[15px] font-bold ${ink}`}>
-          <span>Total sebulan</span><span className={accent}>{rupiah(monthTotal(brand))}</span>
+          <span>Total sebulan ({TAX_NOTE})</span><span className={accent}>{rupiah(monthTotal(brand))}</span>
         </div>
       </div>
       <div className="absolute top-[160px] left-[904px] w-[312px] space-y-4">
@@ -640,7 +640,8 @@ function AdSlide({ brand, num }: { brand: Brand; num: number }) {
         </div>
         <div>
           <div className={`mb-1.5 text-[11px] font-bold tracking-[0.14em] uppercase ${muted}`}>Biaya per hari</div>
-          <div className={`text-[13px] ${ink}`}>Instagram Rp30.000 • TikTok Rp25.000</div>
+          <div className={`text-[13px] ${ink}`}>Instagram {rupiah(PER_DAY.Instagram)} • TikTok {rupiah(PER_DAY.TikTok)}</div>
+          <div className={`text-[12px] ${muted}`}>Semua biaya {TAX_NOTE}.</div>
         </div>
         <ul className={`space-y-1.5 border-t pt-3 text-[12px] leading-[1.35] ${line} ${muted}`}>
           {adRules.map((r) => <li key={r}>• {r}</li>)}
