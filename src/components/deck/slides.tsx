@@ -3,7 +3,7 @@ import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } fr
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
-import { episodeFlow, talkClips, talkEpisodes, talkFlow, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
+import { episodeDetail, episodeFlow, talkClips, talkEpisodes, talkFlow, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
 import logoBeauty from "@/assets/ggs-beauty-logo.jpg";
 import logoHair from "@/assets/ggs-hair-studio-logo.png";
@@ -769,6 +769,58 @@ function TalkEpisodeSlide({ brand, num }: { brand: Brand; num: number }) {
   );
 }
 
+function TalkRundownSlide({ brand, idx, num }: { brand: Brand; idx: number; num: number }) {
+  const b = brand === "beauty";
+  const e = talkEpisodes[brand][idx]!;
+  const d = episodeDetail(e);
+  const accent = b ? "text-ggs-pink" : "text-ggs-gold";
+  const ink = b ? "text-ggs-ink" : "text-primary-foreground";
+  const muted = b ? "text-ggs-gray" : "text-primary-foreground/65";
+  const line = b ? "border-border" : "border-primary-foreground/15";
+  const panel = b ? "bg-ggs-pink-soft" : "bg-ggs-gold-soft";
+  return (
+    <Stage dark={!b}>
+      <div className="absolute top-[42px] left-[64px]">
+        <Kicker color={b ? "pink" : "gold"}>{b ? "GGS BEAUTY" : "GGS HAIR STUDIO"} • ALUR EPISODE {idx + 1} • {e.air} 16:00</Kicker>
+      </div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>{e.topic}</h2>
+      <div className={`absolute top-[134px] left-[64px] w-[1152px] text-[13.5px] ${muted}`}>
+        Tamu: {e.guest} • Layanan: {e.service.split(" — ")[0]} • 25 menit, ngalir dari awal sampai akhir
+      </div>
+      <div className={`absolute top-[172px] left-[64px] w-[1152px] rounded-md px-4 py-2.5 ${panel}`}>
+        <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-ggs-ink/70">Kalimat buka host — </span>
+        <span className="text-[14px] italic text-ggs-ink">“{d.open}”</span>
+      </div>
+      <div className="absolute top-[232px] left-[64px] grid w-[1152px] grid-cols-5 gap-4">
+        {d.steps.map((s, i) => (
+          <div key={s.t} className={`border-t-2 pt-2 ${line}`}>
+            <div className="flex items-baseline justify-between text-[11px] font-bold tracking-[0.1em] uppercase">
+              <span className={accent}>{i + 1}. {s.name}</span>
+              <span className={muted}>{s.t}</span>
+            </div>
+            <div className={`mt-2 text-[14px] font-bold leading-[1.3] ${ink}`}>{s.q}</div>
+            <div className={`mt-3 text-[10.5px] font-bold tracking-[0.1em] uppercase ${muted}`}>Kejar dengan</div>
+            <ul className="mt-1 space-y-1">
+              {s.follow.map((f) => (
+                <li key={f} className={`text-[12.5px] leading-[1.3] ${ink}`}>↳ {f}</li>
+              ))}
+            </ul>
+            <div className={`mt-3 text-[10.5px] font-bold tracking-[0.1em] uppercase ${muted}`}>Kamera</div>
+            <div className={`text-[12px] leading-[1.3] ${ink}`}>{s.shot}</div>
+            <div className={`mt-3 text-[10.5px] font-bold tracking-[0.1em] uppercase ${muted}`}>Catatan</div>
+            <div className={`text-[12px] leading-[1.3] ${muted}`}>{s.note}</div>
+          </div>
+        ))}
+      </div>
+      <div className={`absolute top-[580px] left-[64px] w-[1152px] rounded-md px-4 py-2.5 ${panel}`}>
+        <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-ggs-ink/70">Kalimat nutup — </span>
+        <span className="text-[14px] italic text-ggs-ink">“{d.close}”</span>
+      </div>
+      <Footer n={num} dark={!b} />
+    </Stage>
+  );
+}
+
 export const slides: { id: string; el: () => ReactNode }[] = [
 
   { id: "cover", el: CoverSlide },
@@ -791,8 +843,14 @@ export const slides: { id: string; el: () => ReactNode }[] = [
   { id: "talk-hair", el: () => <TalkSlide brand="hair" num={24} /> },
   { id: "talk-ep-beauty", el: () => <TalkEpisodeSlide brand="beauty" num={25} /> },
   { id: "talk-ep-hair", el: () => <TalkEpisodeSlide brand="hair" num={26} /> },
-  { id: "caption-beauty", el: () => <CaptionSlide brand="beauty" num={27} /> },
-  { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={28} /> },
+  ...(["beauty", "hair"] as const).flatMap((brand, bi) =>
+    [0, 1, 2].map((idx) => ({
+      id: `rundown-${brand}-${idx + 1}`,
+      el: () => <TalkRundownSlide brand={brand} idx={idx} num={27 + bi * 3 + idx} />,
+    })),
+  ),
+  { id: "caption-beauty", el: () => <CaptionSlide brand="beauty" num={33} /> },
+  { id: "caption-hair", el: () => <CaptionSlide brand="hair" num={34} /> },
 
   { id: "closing", el: ClosingSlide },
 ];

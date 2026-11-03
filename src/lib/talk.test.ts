@@ -58,7 +58,7 @@ test("every aired episode has a full rundown with its own opening, follow-ups an
   for (const b of ["beauty", "hair"] as const)
     for (const e of talkEpisodes[b]) {
       const d = episodeDetail(e);
-      expect(d.open).not.toMatch(/bareng .* GGS\.$/i.test(d.open) && d.open.includes(e.topic.toLowerCase()) ? /^$/ : /^\b$/);
+      expect(d.open).not.toContain(e.topic.toLowerCase());
       expect(d.steps).toHaveLength(5);
       expect(d.steps.every((s) => s.follow.length === 2 && s.shot.length > 0)).toBe(true);
       expect(d.close).toMatch(/booking|konsultasi/i);
