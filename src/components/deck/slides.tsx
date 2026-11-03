@@ -22,7 +22,7 @@ function Stage({ children, dark }: { children: ReactNode; dark?: boolean }) {
       style={BODY}
     >
       {children}
-      <div className={`pointer-events-none absolute inset-x-0 bottom-[8px] z-10 text-center text-[14px] font-bold ${dark ? "text-ggs-gold/70" : "text-ggs-gray/70"}`}>
+      <div className={`pointer-events-none absolute inset-x-0 bottom-[24px] z-10 text-center text-[13px] font-bold leading-none ${dark ? "text-ggs-gold/70" : "text-ggs-gray/70"}`}>
         Nempo.id
       </div>
     </div>
@@ -31,7 +31,7 @@ function Stage({ children, dark }: { children: ReactNode; dark?: boolean }) {
 
 function Footer({ n, dark }: { n: number; dark?: boolean }) {
   return (
-    <div className={`absolute right-12 bottom-6 text-[13px] ${dark ? "text-white/40" : "text-ggs-gray"}`}>
+    <div className={`absolute right-12 bottom-[24px] text-[13px] leading-none ${dark ? "text-white/40" : "text-ggs-gray"}`}>
       Jadwal Konten GGS • {n}
     </div>
   );
