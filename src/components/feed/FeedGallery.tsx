@@ -1,13 +1,12 @@
 import { useRef, useState } from "react";
 import { toPng } from "html-to-image";
-import { feedTemplates, templatesFor, FEED_W, FEED_H, type FeedKind } from "@/lib/feed-templates";
+import { feedTemplates, FEED_W, FEED_H } from "@/lib/feed-templates";
 import type { Brand } from "@/lib/content-plan";
 import { FeedCard } from "@/components/feed/FeedCard";
 import { FeedFrame } from "@/components/feed/FeedFrame";
 
 const HEAD = { fontFamily: "'Trebuchet MS', sans-serif" };
 
-type KindFilter = FeedKind | "semua";
 
 function FilterBtn({
   active,
@@ -85,9 +84,7 @@ function GalleryItem({ id, master }: { id: string; master?: Brand }) {
 }
 
 export function FeedGallery() {
-  const [kind, setKind] = useState<KindFilter>("semua");
   const [brand, setBrand] = useState<Brand>("hair");
-  const list = templatesFor(kind, brand);
 
   return (
     <div className="min-h-screen bg-background px-8 py-10">
