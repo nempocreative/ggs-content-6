@@ -20,3 +20,5 @@
 - [x] Buat ulang PPTX & PDF dari deck terbaru (46 slide) — tersimpan sebagai GGS-Content-Plan_v2.
 - [x] Tambah halaman Program Promo (hal. 46–47): promo rutin, bulanan, momen & konten beserta aturan main; dicek lewat preview tanpa overflow.
 - [x] Buat ulang PPTX & PDF versi v3 (48 slide) termasuk halaman Program Promo.
+- [x] Tambah kalender promo bertanggal Nov–Des 2026 untuk cewek (hal. 48) dan versi cowok/barber dengan tanggal yang sama (hal. 49); dicek lewat preview tanpa overflow.
+- [ ] Perluas kalender promo sampai akhir bulan / akhir tahun sesuai permintaan berikutnya, lalu buat ulang PPTX & PDF kalau diminta.

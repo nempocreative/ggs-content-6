@@ -3,7 +3,7 @@ import { briefs, catalogService, scheduledBrief, SERVICE_SOURCE, type Brand } fr
 import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, schedHair, schedJapan, weekRanges, shortName, pillarName, dualName, type PillarKey } from "@/lib/schedule";
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE } from "@/lib/ads";
-import { KIND_LABEL, promosByKind, promoRules, promoCalendar, type PromoKind } from "@/lib/promos";
+import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, type PromoKind } from "@/lib/promos";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -654,26 +654,32 @@ function AdSlide({ brand, num }: { brand: Brand; num: number }) {
 }
 
 
-function PromoCalendarSlide({ num }: { num: number }) {
+function PromoCalendarSlide({ num, brand = "beauty" }: { num: number; brand?: "beauty" | "hair" }) {
+  const hair = brand === "hair";
+  const rows = hair ? hairPromoCalendar : promoCalendar;
+  const ink = hair ? "text-primary-foreground" : "text-ggs-ink";
+  const muted = hair ? "text-primary-foreground/65" : "text-ggs-gray";
+  const line = hair ? "border-primary-foreground/15" : "border-border";
+  const chip = hair ? "bg-ggs-gold-soft text-ggs-ink" : "bg-ggs-pink-soft text-ggs-pink";
   return (
-    <Stage dark={false}>
-      <div className="absolute top-[42px] left-[64px]"><Kicker color="pink">GGS • KALENDER PROMO</Kicker></div>
-      <h2 className="slide-title absolute top-[80px] left-[64px] font-bold text-ggs-ink" style={HEAD}>Promo Nov – Des 2026</h2>
+    <Stage dark={hair}>
+      <div className="absolute top-[42px] left-[64px]"><Kicker color={hair ? "gold" : "pink"}>GGS • KALENDER PROMO {hair ? "COWOK" : "CEWEK"}</Kicker></div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>Promo {hair ? "Cowok" : "Cewek"} Nov – Des 2026</h2>
       <div className="absolute top-[160px] left-[64px] w-[1152px]">
-        <div className="grid grid-cols-[130px_200px_200px_1fr] gap-3 border-b border-border pb-2 text-[11px] font-bold tracking-[0.12em] uppercase text-ggs-gray">
+        <div className={`grid grid-cols-[130px_200px_200px_1fr] gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
           <div>Tanggal</div><div>Momen</div><div>Nama promo</div><div>Detail</div>
         </div>
-        {promoCalendar.map((p) => (
-          <div key={p.name} className="grid grid-cols-[130px_200px_200px_1fr] items-center gap-3 border-b border-border py-[8px] text-[13px] leading-[1.3]">
-            <div><span className="rounded bg-ggs-pink-soft px-2 py-[3px] text-[11.5px] font-bold text-ggs-pink">{p.date}</span></div>
-            <div className="text-ggs-gray">{p.occasion}</div>
-            <div className="font-bold text-ggs-ink">{p.name}</div>
-            <div className="text-ggs-gray">{p.detail}</div>
+        {rows.map((p) => (
+          <div key={p.name} className={`grid grid-cols-[130px_200px_200px_1fr] items-center gap-3 border-b py-[8px] text-[13px] leading-[1.3] ${line}`}>
+            <div><span className={`rounded px-2 py-[3px] text-[11.5px] font-bold ${chip}`}>{p.date}</span></div>
+            <div className={muted}>{p.occasion}</div>
+            <div className={`font-bold ${ink}`}>{p.name}</div>
+            <div className={muted}>{p.detail}</div>
           </div>
         ))}
-        <div className="mt-3 text-[12px] text-ggs-gray">Lebaran 2026 sudah lewat (Maret) — promo Lebaran berikutnya disiapkan untuk Maret 2027. Semua diskon masih usulan.</div>
+        <div className={`mt-3 text-[12px] ${muted}`}>Lebaran 2026 sudah lewat (Maret) — promo Lebaran berikutnya disiapkan untuk Maret 2027. Semua diskon masih usulan.</div>
       </div>
-      <Footer n={num} dark={false} />
+      <Footer n={num} dark={hair} />
     </Stage>
   );
 }
@@ -1185,7 +1191,8 @@ export const slides: { id: string; el: () => ReactNode }[] = [
   { id: "ads-hair", el: () => <AdSlide brand="hair" num={45} /> },
   { id: "promo-rutin", el: () => <PromoSlide num={46} groups={["mingguan", "bulanan"]} title="Program Promo — Rutin" side="why" dark={false} /> },
   { id: "promo-momen", el: () => <PromoSlide num={47} groups={["momen", "konten"]} title="Program Promo — Momen & Konten" side="rules" dark /> },
-  { id: "promo-kalender", el: () => <PromoCalendarSlide num={48} /> },
+  { id: "promo-kalender", el: () => <PromoCalendarSlide num={48} brand="beauty" /> },
+  { id: "promo-kalender-hair", el: () => <PromoCalendarSlide num={49} brand="hair" /> },
 
   { id: "closing", el: ClosingSlide },
 ];
