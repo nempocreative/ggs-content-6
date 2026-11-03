@@ -1,0 +1,522 @@
+[
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Press On Nail"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Kuku Asli Polos/Glitter"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Kuku Asli Motif"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Kuku Asli Cat Eye"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Kuku Asli Full Cat Eye + Chrome"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Fake Nail"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Motif"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Kuku Palsu Full Cat Eye + Chrome"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Motif Sulit"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Kuku Asli Kaki"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Tambah Aksesoris"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Tambah Nail 1 Jari"
+  },
+  {
+    "brand": "beauty",
+    "category": "NAIL ART",
+    "name": "Remover Nail"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Cuci Rambut"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Cuci Blow"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Cuci Catok"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Cuci Catok/Curly Rambut Sambung"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Cuci Curly"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Curly Rambut"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Catok Rambut Pendek"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Catok Rambut Panjang"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Catok Rambut Sambung"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Potong Cuci Catok"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Potong Cuci Curly"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Potong Cuci Blow"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Potong Rambut"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIRCUT & STYLING",
+    "name": "Potong Poni"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING FULL WARNA · TANPA BLEACHING",
+    "name": "Pendek"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING FULL WARNA · TANPA BLEACHING",
+    "name": "Sedang"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING FULL WARNA · TANPA BLEACHING",
+    "name": "Panjang"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING FULL WARNA · DENGAN BLEACHING",
+    "name": "Pendek"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING FULL WARNA · DENGAN BLEACHING",
+    "name": "Sedang"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING FULL WARNA · DENGAN BLEACHING",
+    "name": "Panjang"
+  },
+  {
+    "brand": "beauty",
+    "category": "CREAMBATH",
+    "name": "Cultusia"
+  },
+  {
+    "brand": "beauty",
+    "category": "CREAMBATH",
+    "name": "CBD"
+  },
+  {
+    "brand": "beauty",
+    "category": "CREAMBATH",
+    "name": "Makarizo"
+  },
+  {
+    "brand": "beauty",
+    "category": "CREAMBATH",
+    "name": "L'Oréal"
+  },
+  {
+    "brand": "beauty",
+    "category": "CREAMBATH",
+    "name": "L'Oréal Warna"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIR TREATMENT",
+    "name": "Treatment Ketombe"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIR TREATMENT",
+    "name": "Treatment Kutu Anak (1-5 th)"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIR TREATMENT",
+    "name": "Treatment Kutu Dewasa"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIR TREATMENT",
+    "name": "Treatment Rambut Bercabang"
+  },
+  {
+    "brand": "beauty",
+    "category": "HAIR TREATMENT",
+    "name": "Masker"
+  },
+  {
+    "brand": "beauty",
+    "category": "KERATIN TREATMENT",
+    "name": "Pendek"
+  },
+  {
+    "brand": "beauty",
+    "category": "KERATIN TREATMENT",
+    "name": "Sedang"
+  },
+  {
+    "brand": "beauty",
+    "category": "KERATIN TREATMENT",
+    "name": "Panjang"
+  },
+  {
+    "brand": "beauty",
+    "category": "KERATIN SMOOTHING",
+    "name": "Pendek"
+  },
+  {
+    "brand": "beauty",
+    "category": "KERATIN SMOOTHING",
+    "name": "Sedang"
+  },
+  {
+    "brand": "beauty",
+    "category": "KERATIN SMOOTHING",
+    "name": "Panjang"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING HIGHLIGHT",
+    "name": "Pendek"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING HIGHLIGHT",
+    "name": "Sedang"
+  },
+  {
+    "brand": "beauty",
+    "category": "COLOURING HIGHLIGHT",
+    "name": "Panjang"
+  },
+  {
+    "brand": "beauty",
+    "category": "MASSAGE SERVICE",
+    "name": "Full Body Massage 60 Menit"
+  },
+  {
+    "brand": "beauty",
+    "category": "MASSAGE SERVICE",
+    "name": "Full Body Massage 90 Menit"
+  },
+  {
+    "brand": "beauty",
+    "category": "MASSAGE SERVICE",
+    "name": "Reflexion 60 Menit"
+  },
+  {
+    "brand": "beauty",
+    "category": "BODY TREATMENT",
+    "name": "Ratus"
+  },
+  {
+    "brand": "beauty",
+    "category": "BODY TREATMENT",
+    "name": "Waxing Ketiak"
+  },
+  {
+    "brand": "beauty",
+    "category": "BODY TREATMENT",
+    "name": "Masker Ketiak"
+  },
+  {
+    "brand": "beauty",
+    "category": "BODY TREATMENT",
+    "name": "Lulur + Masker Badan"
+  },
+  {
+    "brand": "beauty",
+    "category": "FACE TREATMENT",
+    "name": "Totok Wajah + Masker 45 Menit"
+  },
+  {
+    "brand": "beauty",
+    "category": "MENIPEDI",
+    "name": "MeniPedi"
+  },
+  {
+    "brand": "beauty",
+    "category": "MENIPEDI",
+    "name": "Menicure"
+  },
+  {
+    "brand": "beauty",
+    "category": "MENIPEDI",
+    "name": "Pedicure"
+  },
+  {
+    "brand": "beauty",
+    "category": "BUNDLING PACKAGE",
+    "name": "Body Massage + Reflexy (90 menit)"
+  },
+  {
+    "brand": "beauty",
+    "category": "BUNDLING PACKAGE",
+    "name": "Body Massage + Kerok (90 menit)"
+  },
+  {
+    "brand": "beauty",
+    "category": "BUNDLING PACKAGE",
+    "name": "Body Massage + Scrub + Masker Badan (120 menit)"
+  },
+  {
+    "brand": "beauty",
+    "category": "BUNDLING PACKAGE",
+    "name": "Body Massage + Totok Wajah (90 menit)"
+  },
+  {
+    "brand": "beauty",
+    "category": "BUNDLING PACKAGE",
+    "name": "Body Massage + Reflexy + Scrub (120 menit)"
+  },
+  {
+    "brand": "beauty",
+    "category": "BUNDLING PACKAGE",
+    "name": "Body Massage + Reflexy + Totok Wajah (120 menit)"
+  },
+  {
+    "brand": "beauty",
+    "category": "BUNDLING PACKAGE",
+    "name": "Body Massage + Reflexy + Kerok (120 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR CUT",
+    "name": "Anak & Pelajar"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR CUT",
+    "name": "Dewasa"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR CUT",
+    "name": "Botak Licin"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR CUT",
+    "name": "Panjang Gondrong"
+  },
+  {
+    "brand": "hair",
+    "category": "ADDITION",
+    "name": "Keramas"
+  },
+  {
+    "brand": "hair",
+    "category": "ADDITION",
+    "name": "Potong Kumis"
+  },
+  {
+    "brand": "hair",
+    "category": "ADDITION",
+    "name": "Potong Jenggot"
+  },
+  {
+    "brand": "hair",
+    "category": "ADDITION",
+    "name": "Pijat Kepala (15 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "ADDITION",
+    "name": "Masker / Facial & Pijat Muka (15 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "ADDITION",
+    "name": "Pijat Kepala Muka Facial Bahu (30 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "ADDITION",
+    "name": "Creambath Pijat Kepala Bahu (30 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR STYLING",
+    "name": "Perming"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR STYLING",
+    "name": "Keratin Smoothing"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR STYLING",
+    "name": "Colouring No Bleaching"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR STYLING",
+    "name": "Colouring Bleaching"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR STYLING",
+    "name": "Highlight No Bleaching"
+  },
+  {
+    "brand": "hair",
+    "category": "HAIR STYLING",
+    "name": "Highlight Bleaching"
+  },
+  {
+    "brand": "hair",
+    "category": "PAKET EKONOMIS",
+    "name": "Paket G (Ganteng) — Potong + Pijat Bahu (15 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "PAKET EKONOMIS",
+    "name": "Paket GP (Ganteng Pisan) — Potong + Pijat Kepala Bahu + Keramas (15 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "PAKET EKONOMIS",
+    "name": "Paket GPS (Ganteng Pisan Sob) — Potong + Creambath Pijat Kepala Bahu + Tonik (30 menit)"
+  },
+  {
+    "brand": "hair",
+    "category": "PAKET EKONOMIS",
+    "name": "Paket GPSS (Ganteng Pisan Sob Sob) — Potong + Keramas Tonik + Pijat Kepala Muka + Facial (30 menit)"
+  },
+  {
+    "brand": "beauty",
+    "category": "MINUMAN",
+    "name": "Golda"
+  },
+  {
+    "brand": "beauty",
+    "category": "MINUMAN",
+    "name": "Indomilk"
+  },
+  {
+    "brand": "beauty",
+    "category": "MINUMAN",
+    "name": "Milku"
+  },
+  {
+    "brand": "beauty",
+    "category": "MINUMAN",
+    "name": "Teh Kotak"
+  },
+  {
+    "brand": "beauty",
+    "category": "MINUMAN",
+    "name": "Nipis Madu"
+  },
+  {
+    "brand": "beauty",
+    "category": "MINUMAN",
+    "name": "Teh Pucuk"
+  },
+  {
+    "brand": "beauty",
+    "category": "MINUMAN",
+    "name": "Sprit"
+  },
+  {
+    "brand": "beauty",
+    "category": "PRODUK",
+    "name": "Body Lotion Malam"
+  },
+  {
+    "brand": "beauty",
+    "category": "PRODUK",
+    "name": "Body Lotion Siang"
+  },
+  {
+    "brand": "beauty",
+    "category": "PRODUK",
+    "name": "Facial Wash"
+  },
+  {
+    "brand": "beauty",
+    "category": "PRODUK",
+    "name": "Clay Curly"
+  },
+  {
+    "brand": "beauty",
+    "category": "PRODUK",
+    "name": "Clay Matte"
+  },
+  {
+    "brand": "beauty",
+    "category": "PRODUK",
+    "name": "Powder"
+  }
+]

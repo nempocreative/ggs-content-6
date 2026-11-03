@@ -59,6 +59,15 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* GGS brand tokens */
+  --color-ggs-pink: var(--ggs-pink);
+  --color-ggs-pink-soft: var(--ggs-pink-soft);
+  --color-ggs-gold: var(--ggs-gold);
+  --color-ggs-gold-soft: var(--ggs-gold-soft);
+  --color-ggs-ink: var(--ggs-ink);
+  --color-ggs-dark: var(--ggs-dark);
+  --color-ggs-dark-card: var(--ggs-dark-card);
+  --color-ggs-gray: var(--ggs-gray);
 }
 
 :root {
@@ -95,6 +104,15 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  /* GGS brand colors */
+  --ggs-pink: oklch(0.562 0.186 3);
+  --ggs-pink-soft: oklch(0.955 0.018 350);
+  --ggs-gold: oklch(0.715 0.128 88);
+  --ggs-gold-soft: oklch(0.94 0.045 95);
+  --ggs-ink: oklch(0.2 0.015 270);
+  --ggs-dark: oklch(0.16 0.01 270);
+  --ggs-dark-card: oklch(0.22 0.012 270);
+  --ggs-gray: oklch(0.55 0.02 260);
 }
 
 .dark {
@@ -141,4 +159,47 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+.slide-content {
+  --slide-title-lg: 68px;
+  --slide-title: 44px;
+  --slide-subtitle: 32px;
+  --slide-body: 18px;
+  --slide-stat: 76px;
+  letter-spacing: 0;
+}
+
+.slide-title-lg { font-size: var(--slide-title-lg); line-height: 1.1; }
+.slide-title { font-size: var(--slide-title); line-height: 1.15; }
+.slide-subtitle { font-size: var(--slide-subtitle); line-height: 1.3; }
+.slide-body { font-size: var(--slide-body); line-height: 1.35; }
+.slide-stat { font-size: var(--slide-stat); line-height: 1; }
+.slide-content [class*="tracking-"] { letter-spacing: 0; }
+
+.content-type-flag {
+  display: inline-flex;
+  width: 56px;
+  height: 18px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid currentColor;
+  padding-right: 4px;
+  clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.schedule-cell-heading {
+  display: flex;
+  height: 18px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
 }

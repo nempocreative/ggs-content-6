@@ -1,24 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Deck } from "@/components/deck/Deck";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Jadwal Konten GGS Beauty & GGS Hair Studio — November 2026" },
+      {
+        name: "description",
+        content:
+          "Rencana konten 4 minggu (4 Nov – 1 Des 2026) untuk GGS Beauty dan GGS Hair Studio: 3 konten per hari, maksimal 2 video, 5 pilar konten.",
+      },
+      { property: "og:title", content: "Jadwal Konten GGS Beauty & GGS Hair Studio" },
+      {
+        property: "og:description",
+        content: "Rencana konten 4 minggu: 168 konten, 2 akun, 1 strategi. 4 Nov – 1 Des 2026.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Deck,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
