@@ -31,3 +31,6 @@
 - [x] Label minggu iklan dipendekkan supaya tidak pecah dua baris di hal. 44–45.
 - [x] Buat ulang export final: GGS-Content-Plan_v6.pptx (54 slide) + GGS-Content-Plan_v10.pdf (54 halaman, teks asli & tajam) — semua halaman dicek, tidak ada halaman kosong.
 
+
+## Selesai: Galeri desain feed IG (Nov 2026)
+- [x] Halaman /feed: 12 template 1080x1440 (6 promo + 6 harian, dua brand), filter jenis/brand, unduh PNG per desain — terverifikasi PNG 1080x1440
