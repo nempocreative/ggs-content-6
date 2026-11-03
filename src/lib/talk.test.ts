@@ -52,3 +52,15 @@ test("every aired episode has its own 5-step flow from buka to nutup", () => {
       expect(f.every((s) => s.q.endsWith("?"))).toBe(true);
     }
 });
+
+import { episodeDetail } from "./talk";
+test("every aired episode has a full rundown with its own opening, follow-ups and closing", () => {
+  for (const b of ["beauty", "hair"] as const)
+    for (const e of talkEpisodes[b]) {
+      const d = episodeDetail(e);
+      expect(d.open).not.toContain(e.topic.toLowerCase());
+      expect(d.steps).toHaveLength(5);
+      expect(d.steps.every((s) => s.follow.length === 2 && s.shot.length > 0)).toBe(true);
+      expect(d.close).toMatch(/booking|konsultasi/i);
+    }
+});

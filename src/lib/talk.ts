@@ -200,3 +200,150 @@ export function episodeFlow(e: TalkEpisode): EpisodeStep[] {
   const f = FLOWS[e.topic] ?? genericFlow(e);
   return f.map(([q, note], i) => ({ t: STEPS[i] ?? "", name: NAMES[i] ?? "", q, note }));
 }
+
+// ---- Alur lengkap per episode: kalimat buka, tiap tahap ada pertanyaan lanjutan & shot, lalu kalimat nutup ----
+export type EpisodeStepDetail = EpisodeStep & { follow: string[]; shot: string };
+export type EpisodeDetail = { open: string; steps: EpisodeStepDetail[]; close: string };
+
+type Extra = { open: string; follow: [string, string][]; shot: string[]; close: string };
+
+const EXTRA: Record<string, Extra> = {
+  "Cerita di balik nail art": {
+    open: "Sore Garut! Hari ini kita ngobrol sama orang yang tiap hari megang kuku orang — nail artist GGS.",
+    follow: [
+      ["Waktu itu deg-degan nggak?", "Hasilnya sekarang kalau dilihat lagi gimana?"],
+      ["Kegagalan paling parah yang masih diinget?", "Kapan mulai yakin ini jadi kerjaan?"],
+      ["Bagian mana yang paling lama?", "Kenapa nggak bisa dipercepat?"],
+      ["Gimana cara kamu bilang 'ini nggak bisa'?", "Kebiasaan apa yang bikin kuku cepat rusak?"],
+      ["Warna apa yang aman buat pertama kali?", "Model apa yang lagi banyak diminta bulan ini?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: tangan, alat, botol cat eye",
+      "Reaksi host — kandidat klip 2",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Yang penasaran mau coba, langsung booking di GGS Beauty. Jumat depan kita ngopi sore lagi, ya!",
+  },
+  "Self care itu bukan kemewahan": {
+    open: "Sore Garut! Kita ngobrol soal istirahat yang sering dilupain, bareng terapis wajah GGS.",
+    follow: [
+      ["Apa yang bikin susah istirahat?", "Biasanya gimana cara kamu ngilangin capek?"],
+      ["Pernah denger alasan apa paling sering?", "Menurut kamu itu bener nggak?"],
+      ["Bagian mana yang paling bikin rileks?", "Kenapa durasinya 45 menit?"],
+      ["Ada cerita pelanggan yang sampai ketiduran?", "Satu kebiasaan kecil sebelum tidur?"],
+      ["Seminggu sekali atau sebulan sekali?", "Pesan buat yang selalu ngerasa nggak sempat?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: masker, tangan terapis, ruang treatment",
+      "Reaksi host — kandidat klip 2",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Butuh jeda sebentar? Booking totok wajah di GGS Beauty. Jumat depan kita ngopi sore lagi, ya!",
+  },
+  "Rambut berwarna, rawat bagaimana?": {
+    open: "Sore Garut! Hari ini bahas rambut warna — biar nggak cepat pudar — bareng stylist warna GGS.",
+    follow: [
+      ["Siapa yang milihin warnanya waktu itu?", "Reaksi orang rumah gimana?"],
+      ["Foto referensi paling susah yang pernah dibawa?", "Gimana jelasin kalau hasilnya bakal beda?"],
+      ["Kenapa kondisi rambut dicek dulu?", "Kapan kamu bilang 'jangan sekarang'?"],
+      ["Sampo apa yang sebaiknya dihindari?", "Berapa lama warna biasanya bertahan?"],
+      ["Warna apa yang aman buat pemula?", "Kapan waktunya touch up?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: palet warna, proses bilas, hasil akhir",
+      "Reaksi host — kandidat klip 2",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Mau ganti warna? Konsultasi dulu di GGS Beauty. Jumat depan kita ngopi sore lagi, ya!",
+  },
+  "Perming di rambut pria": {
+    open: "Sore Garut! Cowok perming — masih aneh atau udah biasa? Kita ngobrol bareng barber GGS Hair Studio.",
+    follow: [
+      ["Sekarang masih kaget nggak?", "Kenapa makin banyak yang minta?"],
+      ["Dia minta model kayak gimana?", "Hasilnya dia suka nggak?"],
+      ["Rambut kayak apa yang nggak cocok perming?", "Berapa lama prosesnya?"],
+      ["Hari pertama setelah perming, apa yang nggak boleh?", "Produk apa yang perlu dipakai?"],
+      ["Keriting tipis atau langsung tebal?", "Berapa lama biasanya bertahan?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: roller perming, proses di kursi, hasil",
+      "Reaksi host — kandidat klip 2",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Penasaran sama perming? Booking di GGS Hair Studio. Jumat depan kita ngopi sore lagi, ya!",
+  },
+  "Kenapa Paket GPS banyak diambil": {
+    open: "Sore Garut! Kita bongkar paket paling laku di sini — Ganteng Pisan Sob — bareng barber GGS.",
+    follow: [
+      ["Siapa yang pertama ngusulin nama itu?", "Pelanggan biasanya ketawa nggak denger namanya?"],
+      ["Ada pelanggan yang tiap minggu datang?", "Biasanya mereka cerita apa di kursi?"],
+      ["Bagian mana yang paling disukai?", "Kenapa creambath dan pijat dijadiin satu?"],
+      ["Siapa yang paling sering ketiduran?", "Biar rapi seminggu, apa yang dilakuin di rumah?"],
+      ["Sebelum kerja, kondangan, atau tiap minggu?", "Pesan buat yang belum pernah coba?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: creambath, pijat kepala-bahu, tonik",
+      "Reaksi host — kandidat klip 2",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Mau ganteng pisan? Booking Paket GPS di GGS Hair Studio. Jumat depan kita ngopi sore lagi, ya!",
+  },
+  "Warna rambut pria, mulai dari mana": {
+    open: "Sore Garut! Cowok mau warnain rambut tapi takut? Kita ngobrol bareng stylist warna GGS Hair Studio.",
+    follow: [
+      ["Reaksi temen kantor gimana?", "Bakal ulang lagi nggak?"],
+      ["Mitos paling lucu yang pernah kamu denger?", "Mana yang bener, mana yang salah?"],
+      ["Kenapa nggak semua warna bisa tanpa bleaching?", "Berapa lama prosesnya?"],
+      ["Air kolam atau matahari ngaruh nggak?", "Sampo apa yang aman?"],
+      ["Coklat gelap atau yang lain?", "Kapan waktunya touch up?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: proses colouring, perbandingan sebelum-sesudah",
+      "Reaksi host — kandidat klip 2",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Mau coba warna tanpa bleaching? Konsultasi di GGS Hair Studio. Jumat depan kita ngopi sore lagi, ya!",
+  },
+};
+
+function genericExtra(e: TalkEpisode): Extra {
+  return {
+    open: `Sore Garut! Hari ini kita ngobrol soal ${e.topic.toLowerCase()} bareng ${e.guest.toLowerCase()} GGS.`,
+    follow: [
+      ["Kenapa topik ini penting buat kamu?", "Pelanggan biasanya nanya apa duluan?"],
+      ["Waktu itu rasanya gimana?", "Apa yang berubah sejak itu?"],
+      ["Bagian mana yang paling lama?", "Kenapa nggak bisa dilewati?"],
+      ["Gimana kamu jelasin ke pelanggan?", "Satu tips yang bisa dicoba di rumah?"],
+      ["Kapan waktu paling pas buat coba?", "Pesan buat yang masih ragu?"],
+    ],
+    shot: [
+      "Wide 2 orang + cangkir kopi",
+      "Close-up wajah tamu saat cerita",
+      "Insert: alat, produk, hasil",
+      "Reaksi host — kandidat klip",
+      "Wide 2 orang, lambaian penutup",
+    ],
+    close: "Mau coba? Langsung booking di GGS. Jumat depan kita ngopi sore lagi, ya!",
+  };
+}
+
+export function episodeDetail(e: TalkEpisode): EpisodeDetail {
+  const x = EXTRA[e.topic] ?? genericExtra(e);
+  return {
+    open: x.open,
+    close: x.close,
+    steps: episodeFlow(e).map((s, i) => ({ ...s, follow: x.follow[i] ?? [], shot: x.shot[i] ?? "" })),
+  };
+}
