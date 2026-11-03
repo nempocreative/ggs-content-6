@@ -63,3 +63,13 @@ describe("kalender promo cowok", () => {
     }
   });
 });
+
+import { promoAdWindow } from "@/lib/promos";
+describe("iklan promo", () => {
+  it("iklan jalan 3 hari sebelum promo sampai hari H", () => {
+    const p = promoCalendar.find((x) => x.date === "11 Nov")!;
+    expect(promoAdWindow(p)).toEqual({ label: "8 Nov – 11 Nov", days: 4 });
+    const d = promoCalendar.find((x) => x.date === "1–11 Des")!;
+    expect(promoAdWindow(d).label).toBe("28 Nov – 1 Des");
+  });
+});
