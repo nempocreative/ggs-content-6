@@ -4,6 +4,7 @@ import { PILLARS, TARGET, JAPAN_DAYS, JAPAN_TARGET, SLOTS, days, schedBeauty, sc
 import { captions, captionRules, hashtags } from "@/lib/captions";
 import { adSchedule, adRules, adTargeting, adWeekLabel, monthTotal, decTotal, rowTotal, rupiah, PER_DAY, TAX_NOTE, promoAdWindow } from "@/lib/ads";
 import { KIND_LABEL, promosByKind, promoRules, promoCalendar, hairPromoCalendar, type PromoKind } from "@/lib/promos";
+import { visitsFor, influencerRules, TIER_INFO } from "@/lib/influencer";
 import { hookBank, hookFormulas, hookRules, japanHooks } from "@/lib/hooks";
 import { episodeAbout, episodeDetail, episodeFlow, episodeHook, talkClips, talkEpisodes, talkFlow, talkIntro, talkMeta, talkQuestions, talkRules } from "@/lib/talk";
 
@@ -686,6 +687,47 @@ function PromoCalendarSlide({ num, brand = "beauty" }: { num: number; brand?: "b
   );
 }
 
+// ---- Jadwal influencer ----
+function InfluencerSlide({ num, brand = "beauty" }: { num: number; brand?: "beauty" | "hair" }) {
+  const hair = brand === "hair";
+  const rows = visitsFor(brand);
+  const ink = hair ? "text-primary-foreground" : "text-ggs-ink";
+  const muted = hair ? "text-primary-foreground/65" : "text-ggs-gray";
+  const line = hair ? "border-primary-foreground/15" : "border-border";
+  const chip = hair ? "bg-ggs-gold-soft text-ggs-ink" : "bg-ggs-pink-soft text-ggs-pink";
+  return (
+    <Stage dark={hair}>
+      <div className="absolute top-[42px] left-[64px]"><Kicker color={hair ? "gold" : "pink"}>GGS • JADWAL INFLUENCER {hair ? "COWOK" : "CEWEK"}</Kicker></div>
+      <h2 className={`slide-title absolute top-[80px] left-[64px] font-bold ${ink}`} style={HEAD}>Influencer Datang Nov – Des 2026</h2>
+      <div className="absolute top-[160px] left-[64px] w-[1152px]">
+        <div className={`grid grid-cols-[110px_190px_120px_1fr_220px_150px] gap-3 border-b pb-2 text-[11px] font-bold tracking-[0.12em] uppercase ${line} ${muted}`}>
+          <div>Tanggal</div><div>Promo yang diangkat</div><div>Influencer</div><div>Yang dishoot</div><div>Tugas konten</div><div>Kompensasi</div>
+        </div>
+        {rows.map((v) => (
+          <div key={v.date} className={`grid grid-cols-[110px_190px_120px_1fr_220px_150px] items-center gap-3 border-b py-[9px] text-[13px] leading-[1.3] ${line}`}>
+            <div><span className={`rounded px-2 py-[3px] text-[11.5px] font-bold ${chip}`}>{v.date}</span></div>
+            <div className={`font-bold ${ink}`}>{v.promo}</div>
+            <div className={muted}>{v.tier} ×{v.count}</div>
+            <div className={muted}>{v.shoot}</div>
+            <div className={muted}>{v.deliverables}</div>
+            <div className={`font-bold ${ink}`}>{v.comp}</div>
+          </div>
+        ))}
+        <div className={`mt-3 grid grid-cols-2 gap-6 text-[12px] leading-[1.4] ${muted}`}>
+          <ul className="space-y-1">
+            {influencerRules.slice(0, 3).map((r) => <li key={r}>• {r}</li>)}
+          </ul>
+          <ul className="space-y-1">
+            {influencerRules.slice(3).map((r) => <li key={r}>• {r}</li>)}
+          </ul>
+        </div>
+        <div className={`mt-2 text-[12px] ${muted}`}>Tier: Nano = {TIER_INFO.Nano} • Mikro = {TIER_INFO.Mikro}.</div>
+      </div>
+      <Footer n={num} dark={hair} />
+    </Stage>
+  );
+}
+
 // ---- Program promo ----
 function PromoSlide({
   num,
@@ -1195,6 +1237,8 @@ export const slides: { id: string; el: () => ReactNode }[] = [
   { id: "promo-momen", el: () => <PromoSlide num={47} groups={["momen", "konten"]} title="Program Promo — Momen & Konten" side="rules" dark /> },
   { id: "promo-kalender", el: () => <PromoCalendarSlide num={48} brand="beauty" /> },
   { id: "promo-kalender-hair", el: () => <PromoCalendarSlide num={49} brand="hair" /> },
+  { id: "influencer-beauty", el: () => <InfluencerSlide num={50} brand="beauty" /> },
+  { id: "influencer-hair", el: () => <InfluencerSlide num={51} brand="hair" /> },
 
   { id: "closing", el: ClosingSlide },
 ];
