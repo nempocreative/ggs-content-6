@@ -36,3 +36,34 @@ describe("Lokal (Garut) di hashtag", () => {
     expect(rule).toMatch(/garut/i);
   });
 });
+
+describe("Caption pakai bahasa ngobrol, bukan bahasa iklan", () => {
+  const BRANDS = ["beauty", "hair"] as const;
+
+  it("tidak ada caption yang pakai kalimat kaku", () => {
+    for (const brand of BRANDS) {
+      for (const c of captions[brand]) {
+        const text = `${c.hook} ${c.body} ${c.cta}`;
+        for (const re of KAKU) expect(text).not.toMatch(re);
+      }
+    }
+  });
+
+  it("setiap caption ngajak ngobrol, bukan cuma nyuruh beli", () => {
+    for (const brand of BRANDS) {
+      for (const c of captions[brand]) {
+        expect(c.cta).toMatch(/koment|tag|simpan|booking|dm|whatsapp|chat|link/i);
+      }
+    }
+  });
+
+  it("body caption cukup pendek buat 2 baris di slide", () => {
+    for (const brand of BRANDS) {
+      for (const c of captions[brand]) expect(c.body.length).toBeLessThanOrEqual(120);
+    }
+  });
+
+  it("aturan caption menyuruh nulis kayak ngomong langsung", () => {
+    expect(captionRules.some((r) => /ngomong/i.test(r))).toBe(true);
+  });
+});
