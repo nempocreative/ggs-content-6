@@ -23,3 +23,6 @@
 - [x] Tambah kalender promo bertanggal Nov–Des 2026 untuk cewek (hal. 48) dan versi cowok/barber dengan tanggal yang sama (hal. 49); dicek lewat preview tanpa overflow.
 - [x] Hubungkan tiap promo bertanggal dengan jadwal iklan IG + TikTok (kolom "Iklan IG + TikTok" di hal. 48–49; iklan jalan 3 hari sebelum sampai hari H), jadwal mingguan hal. 44–45 ikut disesuaikan.
 - [x] Buat ulang PPTX & PDF versi v4 (50 slide) — termasuk kalender promo cewek (hal. 48) & cowok (hal. 49) yang sudah ada kolom iklannya; semua halaman dicek satu-satu dari file PDF jadi.
+- [x] Audit deck dari sisi dobel: tidak ada judul halaman, nama promo, tanggal, atau episode yang kembar; perbaiki 2 file tes yang rusak (import hilang) — 54 tes lulus.
+- [x] Iklan dijadwalkan dengan ritme per minggu sampai Desember (hal. 44–45 jadi 16 baris: 4 minggu Nov + 4 jendela Des, total Rp1.400.000 Nov • Rp1.300.000 Des per akun, belum termasuk pajak); kolom "Iklan IG + TikTok" di kalender promo hal. 48–49 kini menampilkan jendela mingguan yang menutupi tiap promo; dicek di preview dan dari PDF v5.
+- [x] Buat ulang PPTX & PDF versi v5 (50 slide) — semua halaman dicek dari file PDF: tanpa halaman kosong/berulang, halaman iklan, kalender promo, dan penutup bersih.
