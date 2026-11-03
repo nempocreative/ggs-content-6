@@ -27,4 +27,7 @@
 - [x] Iklan dijadwalkan dengan ritme per minggu sampai Desember (hal. 44–45 jadi 16 baris: 4 minggu Nov + 4 jendela Des, total Rp1.400.000 Nov • Rp1.300.000 Des per akun, belum termasuk pajak); kolom "Iklan IG + TikTok" di kalender promo hal. 48–49 kini menampilkan jendela mingguan yang menutupi tiap promo; dicek di preview dan dari PDF v5.
 - [x] Buat ulang PPTX & PDF versi v5 (50 slide) — semua halaman dicek dari file PDF: tanpa halaman kosong/berulang, halaman iklan, kalender promo, dan penutup bersih.
 - [x] Jadwal influencer datang Nov–Des 2026 (hal. 50 cewek, 51 cowok): 6 kunjungan per brand, tiap kunjungan nempel ke promo kalender, hindari 16–24 Nov (owner Jepang) & hari podcast; dicek di preview tanpa overflow.
-- [ ] Buat ulang PPTX & PDF versi v6 (52 slide) termasuk halaman jadwal influencer.
+- [x] Jadwal live Nov–Des 2026 (hal. 52 cewek, 53 cowok): 8 live per brand, jam & ngelive-in apa; dicek lewat preview.
+- [x] Label minggu iklan dipendekkan supaya tidak pecah dua baris di hal. 44–45.
+- [x] Buat ulang export final: GGS-Content-Plan_v6.pptx (54 slide) + GGS-Content-Plan_v10.pdf (54 halaman, teks asli & tajam) — semua halaman dicek, tidak ada halaman kosong.
+
