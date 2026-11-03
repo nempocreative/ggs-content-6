@@ -1,6 +1,5 @@
 import type { Brand } from "@/lib/content-plan";
 import type { DatedPromo } from "@/lib/promos";
-import { weekRanges } from "@/lib/schedule";
 
 export type Platform = "Instagram" | "TikTok";
 export type AdRow = {
