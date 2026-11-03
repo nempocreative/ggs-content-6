@@ -347,3 +347,63 @@ export function episodeDetail(e: TalkEpisode): EpisodeDetail {
     steps: episodeFlow(e).map((s, i) => ({ ...s, follow: x.follow[i] ?? [], shot: x.shot[i] ?? "" })),
   };
 }
+
+// ---- Penjelasan per judul: biar host & tamu paham episode ini soal apa sebelum rekam ----
+export type EpisodeAbout = { inti: string; kenapa: string; poin: string[]; siapkan: string[]; hindari: string[] };
+
+const ABOUT: Record<string, EpisodeAbout> = {
+  "Cerita di balik nail art": {
+    inti: "Ngobrolin perjalanan nail artist GGS: dari belajar, gagal, sampai bisa bikin cat eye yang rapi. Penonton jadi tahu ada kerja teliti di balik kuku cantik.",
+    kenapa: "Orang biasanya cuma lihat hasil akhirnya. Cerita prosesnya bikin mereka lebih percaya dan menghargai harga layanan.",
+    poin: ["Nail art itu butuh latihan & ketelitian, bukan asal cat.", "Proses cat eye ada tahapannya — makanya butuh waktu.", "Cara merawat biar kuku awet setelah dari salon."],
+    siapkan: ["Contoh kuku cat eye (tangan tamu/model)", "Alat: kuas, lampu UV, botol cat eye", "Foto hasil kerja lama vs sekarang"],
+    hindari: ["Menjelekkan salon lain", "Janji 'pasti awet sebulan'"],
+  },
+  "Self care itu bukan kemewahan": {
+    inti: "Ngobrol santai bahwa merawat diri itu kebutuhan biar nggak capek terus, bukan cuma buat yang banyak uang.",
+    kenapa: "Banyak ibu & pekerja di Garut ngerasa self care itu boros. Episode ini bikin mereka merasa 'boleh kok istirahat'.",
+    poin: ["Self care bisa sederhana & terjangkau.", "Isi 45 menit totok wajah + masker itu ngapain aja.", "Kebiasaan kecil self care yang bisa di rumah."],
+    siapkan: ["Masker & alat totok wajah", "Cerita 1 pelanggan (tanpa sebut nama)", "Info harga dari daftar layanan"],
+    hindari: ["Klaim medis (menyembuhkan, awet muda)", "Bikin penonton merasa bersalah"],
+  },
+  "Rambut berwarna, rawat bagaimana?": {
+    inti: "Bahas apa yang terjadi saat rambut diwarnai dan cara merawatnya supaya warna tahan lama dan rambut tetap sehat.",
+    kenapa: "Keluhan paling sering: warna cepat pudar atau rambut kering. Penonton dapat solusi praktis sebelum/sesudah warnain.",
+    poin: ["Hasil warna tergantung kondisi rambut — makanya konsultasi dulu.", "Ekspektasi foto referensi vs hasil nyata.", "3 kesalahan perawatan setelah warnain."],
+    siapkan: ["Palet / katalog warna L'Oréal", "Foto sebelum-sesudah pelanggan (dengan izin)", "Contoh sampo/perawatan"],
+    hindari: ["Janji hasil sama persis dengan foto", "Menyebut merek lain secara negatif"],
+  },
+  "Perming di rambut pria": {
+    inti: "Ngobrolin perming buat cowok: kenapa makin banyak yang coba, prosesnya gimana, dan cara rawat biar hasilnya natural.",
+    kenapa: "Banyak cowok penasaran tapi malu atau takut hasilnya aneh. Episode ini menjawab keraguan itu.",
+    poin: ["Perming cowok sekarang wajar & bisa natural.", "Sebelum mulai, barber cek jenis rambut dulu.", "Cara rawat di hari-hari pertama."],
+    siapkan: ["Roller perming", "Foto hasil perming pelanggan (dengan izin)", "Produk perawatan keriting"],
+    hindari: ["Bilang semua rambut pasti cocok", "Ngeledek pelanggan"],
+  },
+  "Kenapa Paket GPS banyak diambil": {
+    inti: "Bongkar Paket GPS (Ganteng Pisan Sob): potong + creambath + pijat kepala-bahu + tonik dalam 30 menit, dan kenapa jadi favorit.",
+    kenapa: "Ini paket andalan. Penonton yang belum pernah jadi tahu isinya dan pengen coba.",
+    poin: ["Isi paket & urutannya dalam 30 menit.", "Siapa yang cocok ambil paket ini.", "Cerita lucu pelanggan (sampai ketiduran)."],
+    siapkan: ["Kursi barber + alat creambath", "Botol tonik", "Info harga paket dari daftar layanan"],
+    hindari: ["Klaim tonik menumbuhkan rambut", "Bandingin harga dengan barbershop lain"],
+  },
+  "Warna rambut pria, mulai dari mana": {
+    inti: "Panduan buat cowok yang pengen coba warna rambut tanpa bleaching: warna apa yang bisa, aman buat kerja, dan cara rawatnya.",
+    kenapa: "Cowok sering takut warnain karena mitos rusak atau norak. Episode ini bikin mereka berani mulai dari yang aman.",
+    poin: ["Tanpa bleaching ada batas warna — dijelasin jujur.", "Pilihan warna aman buat kerja/kantoran.", "Cara biar warna nggak cepat pudar."],
+    siapkan: ["Katalog warna", "Foto sebelum-sesudah (dengan izin)", "Contoh sampo untuk rambut berwarna"],
+    hindari: ["Janji bisa warna terang tanpa bleaching", "Klaim tidak merusak sama sekali"],
+  },
+};
+
+export function episodeAbout(e: TalkEpisode): EpisodeAbout {
+  return (
+    ABOUT[e.topic] ?? {
+      inti: `Ngobrol santai soal ${e.topic.toLowerCase()} bareng ${e.guest.toLowerCase()} GGS.`,
+      kenapa: "Menjawab pertanyaan yang paling sering ditanyain pelanggan.",
+      poin: ["Ceritanya dulu gimana.", "Prosesnya seperti apa.", "Tips yang bisa dicoba di rumah."],
+      siapkan: ["Alat & produk layanan", "Foto hasil (dengan izin)", "Info harga dari daftar layanan"],
+      hindari: ["Klaim medis", "Menjelekkan tempat lain"],
+    }
+  );
+}
