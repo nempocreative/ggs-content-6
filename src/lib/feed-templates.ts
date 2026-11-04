@@ -31,7 +31,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Diskon 11% semua treatment", "Nail art mulai Rp111.000", "Khusus 11 booking pertama"],
     cta: "Booking via WA sekarang",
     badge: "1 HARI",
-    footer: "GGS Beauty • Garut",
+    footer: "@ggsbeauty.hair.co",
     dark: false,
   },
   {
@@ -44,7 +44,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Haircut + styling Rp111.000", "Gratis hair tonic tiap treatment", "Khusus 11 booking pertama"],
     cta: "Amankan slotmu via WA",
     badge: "1 HARI",
-    footer: "GGS Hair Studio • Garut",
+    footer: "@hairstudio.ggs.bdg",
     dark: true,
   },
   {
@@ -57,7 +57,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Paket facial + nail art hemat 20%", "Cicil 2x tanpa bunga", "Berlaku weekday & weekend"],
     cta: "Chat admin untuk paket gajian",
     badge: "GAJIAN",
-    footer: "GGS Beauty • Garut",
+    footer: "@ggsbeauty.hair.co",
     dark: false,
   },
   {
@@ -70,7 +70,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Paket haircut + creambath hemat 20%", "Gratis pomade mini min. 2 treatment", "Berlaku weekday & weekend"],
     cta: "Chat admin untuk paket gajian",
     badge: "GAJIAN",
-    footer: "GGS Hair Studio • Garut",
+    footer: "@hairstudio.ggs.bdg",
     dark: true,
   },
   {
@@ -83,7 +83,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Diskon 12% semua layanan", "Voucher Rp50.000 untuk visit berikutnya", "Bisa digabung stamp card"],
     cta: "Booking sebelum kehabisan slot",
     badge: "12.12",
-    footer: "GGS Beauty • Garut",
+    footer: "@ggsbeauty.hair.co",
     dark: false,
   },
   {
@@ -96,7 +96,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Haircut + hair coloring bundle", "Gratis styling untuk malam tahun baru", "Slot terbatas, wajib booking"],
     cta: "Kunci slot akhir tahummu",
     badge: "AKHIR TAHUN",
-    footer: "GGS Hair Studio • Garut",
+    footer: "@hairstudio.ggs.bdg",
     dark: true,
   },
   // ---- HARIAN ----
@@ -110,7 +110,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Olesi cuticle oil tiap malam", "Jangan kupas gel polish sendiri", "Re-touch nail art tiap 3 minggu"],
     cta: "Simpan & share ke bestie-mu",
     badge: "TIPS",
-    footer: "GGS Beauty • Garut",
+    footer: "@ggsbeauty.hair.co",
     dark: false,
   },
   {
@@ -123,7 +123,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Keramas 2 hari sekali cukup", "Pakai pomade seukuran koin", "Trim ujung rambut tiap 4 minggu"],
     cta: "Simpan biar gak lupa",
     badge: "TIPS",
-    footer: "GGS Hair Studio • Garut",
+    footer: "@hairstudio.ggs.bdg",
     dark: true,
   },
   {
@@ -136,7 +136,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Cerita di balik nail art", "Ngobrol santai sore Garut", "Tonton di YouTube & Spotify"],
     cta: "Dengerin sekarang",
     badge: "PODCAST",
-    footer: "GGS Talk",
+    footer: "@ggsbeauty.hair.co",
     dark: false,
   },
   {
@@ -149,7 +149,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Demo treatment langsung", "Tanya-jawab gratis", "Giveaway di akhir live"],
     cta: "Nyalakan reminder-nya",
     badge: "LIVE",
-    footer: "GGS Beauty • Garut",
+    footer: "@ggsbeauty.hair.co",
     dark: true,
   },
   {
@@ -162,7 +162,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Geser untuk lihat prosesnya", "Durasi ± 90 menit", "Desain bisa request"],
     cta: "Mau kayak gini? Booking yuk",
     badge: "HASIL",
-    footer: "GGS Beauty • Garut",
+    footer: "@ggsbeauty.hair.co",
     dark: false,
   },
   {
@@ -175,7 +175,7 @@ export const feedTemplates: FeedTemplate[] = [
     body: ["Geser untuk lihat prosesnya", "Fade + styling rapi", "Cocok untuk semua umur"],
     cta: "Mau dicukur kayak gini? WA aja",
     badge: "HASIL",
-    footer: "GGS Hair Studio • Garut",
+    footer: "@hairstudio.ggs.bdg",
     dark: true,
   },
 ];
