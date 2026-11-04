@@ -3,8 +3,8 @@ import type { Brand } from "@/lib/content-plan";
 import { FEED_W, FEED_H } from "@/lib/feed-templates";
 import logoBeauty from "@/assets/ggs-beauty-logo.jpg";
 import logoHair from "@/assets/ggs-hair-studio-logo.png";
-import bgBeauty from "@/assets/feed-bg-beauty.jpg";
-import bgHair from "@/assets/feed-bg-hair.jpg";
+import bgBeauty from "@/assets/feed-bg-beauty-clean.jpg";
+import bgHair from "@/assets/feed-bg-hair-clean.jpg";
 
 /** Font display buat nama brand + tagline; body tetap Calibri biar aman di Office. */
 const DISPLAY = { fontFamily: "'Fraunces', 'Trebuchet MS', serif" };
