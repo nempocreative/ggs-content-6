@@ -121,23 +121,23 @@ export function FeedFrame({
       <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
 
       {/* FOOTER */}
-      <div className="relative px-[52px] pb-[44px]">
-        <div className={`rounded-[34px] px-[34px] py-[26px] ${panel}`}>
-          <div className="mb-[20px] flex items-center gap-[14px]">
+      <div className="relative px-[52px] pb-[34px]">
+        <div className={`rounded-[26px] px-[26px] py-[18px] ${panel}`}>
+          <div className="mb-[14px] flex items-center gap-[12px]">
             <div className={`h-[1px] flex-1 ${line}`} />
-            <div className={`h-[4px] w-[80px] rounded-full ${accentBg}`} />
+            <div className={`h-[3px] w-[58px] rounded-full ${accentBg}`} />
           </div>
 
           {/* baris 1: Instagram + tombol booking */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-[16px]">
-              <span className={`flex h-[48px] w-[48px] items-center justify-center rounded-full ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`}>
-                <IgIcon className="h-[27px] w-[27px]" />
+            <div className="flex items-center gap-[12px]">
+              <span className={`flex h-[38px] w-[38px] items-center justify-center rounded-full ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`}>
+                <IgIcon className="h-[21px] w-[21px]" />
               </span>
-              <span className={`text-[28px] font-bold ${ink}`} style={BODY}>{handle}</span>
+              <span className={`text-[22px] font-bold ${ink}`} style={BODY}>{handle}</span>
             </div>
             <span
-              className={`rounded-full px-[28px] py-[12px] text-[22px] font-black uppercase tracking-[0.18em] ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`}
+              className={`rounded-full px-[20px] py-[8px] text-[16px] font-black uppercase tracking-[0.16em] ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`}
               style={BODY}
             >
               Booking Now
@@ -145,13 +145,14 @@ export function FeedFrame({
           </div>
 
           {/* baris 2: WhatsApp */}
-          <div className="mt-[18px] flex items-center gap-[16px]">
-            <span className={`flex h-[44px] w-[44px] items-center justify-center rounded-full ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`}>
-              <WaIcon className="h-[24px] w-[24px]" />
+          <div className="mt-[12px] flex items-center gap-[12px]">
+            <span className={`flex h-[34px] w-[34px] items-center justify-center rounded-full ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`}>
+              <WaIcon className="h-[19px] w-[19px]" />
             </span>
-            <span className={`text-[26px] font-bold tracking-[0.02em] ${ink}`} style={BODY}>{wa}</span>
+            <span className={`text-[21px] font-bold tracking-[0.02em] ${ink}`} style={BODY}>{wa}</span>
           </div>
         </div>
+
 
 
       </div>
