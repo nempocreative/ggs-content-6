@@ -35,7 +35,12 @@ export function FeedFrame({
   const panel = isDark
     ? "bg-black/45 ring-1 ring-white/15 backdrop-blur-[10px]"
     : "bg-white/65 ring-1 ring-white/80 backdrop-blur-[10px]";
-  const handle = footer ?? (beauty ? "@ggsbeauty" : "@ggshairstudio");
+
+  /** Kontak asli per brand: Instagram + WhatsApp. */
+  const ig = beauty ? "@ggsbeauty.hair.co" : "@hairstudio.ggs.bdg";
+  const wa = beauty ? "0823-4277-7723" : "0813-3335-9200";
+  const handle = footer ?? ig;
+
 
   return (
     <div
