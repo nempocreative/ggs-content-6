@@ -83,6 +83,8 @@
   --color-ggs-pink-hot: var(--ggs-pink-hot);
   --color-ggs-gold: var(--ggs-gold);
   --color-ggs-gold-soft: var(--ggs-gold-soft);
+  --color-ggs-gold-brand: var(--ggs-gold-brand);
+  --color-ggs-gold-deep: var(--ggs-gold-deep);
   --color-ggs-ink: var(--ggs-ink);
   --color-ggs-dark: var(--ggs-dark);
   --color-ggs-dark-card: var(--ggs-dark-card);
@@ -133,6 +135,9 @@
   --ggs-pink-hot: oklch(0.6525 0.23 6.8);
   --ggs-gold: oklch(0.715 0.128 88);
   --ggs-gold-soft: oklch(0.94 0.045 95);
+  /* tone cowok: hitam + emas (emas menyala buat bar/footer, emas tua buat tulisan) */
+  --ggs-gold-brand: oklch(0.78 0.135 86);
+  --ggs-gold-deep: oklch(0.62 0.13 85);
   --ggs-ink: oklch(0.2 0.015 270);
   --ggs-dark: oklch(0.16 0.01 270);
   --ggs-dark-card: oklch(0.22 0.012 270);

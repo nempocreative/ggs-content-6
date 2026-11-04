@@ -70,7 +70,7 @@ function GalleryItem({ id, master }: { id: string; master?: Brand }) {
                 <div
                   className={`m-[56px] flex flex-1 items-center justify-center rounded-[28px] border-4 border-dashed text-[40px] font-bold ${
                     master === "hair"
-                      ? "border-ggs-gold/45 text-ggs-gold/80"
+                      ? "border-ggs-gold-brand/50 text-ggs-gold-brand/85"
                       : "border-white/60 text-white/90"
                   }`}
 
