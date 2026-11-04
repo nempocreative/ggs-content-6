@@ -43,6 +43,7 @@
 - [x] Footer master feed: teks "Nempo.id" dihapus, ikon huruf "@" & "WA" diganti ikon Instagram dan WhatsApp asli — kedua tab dicek di preview dan di file PNG hasil unduh (1080×1440), tidak ada error.
 - [x] Footer master feed dikecilkan (panel, ikon, dan ukuran tulisan diturunkan) biar tidak mendominasi kartu — kedua tab dicek di preview dan di PNG 1080×1440.
 - [x] Tab Cewek pakai tone warna dari acuan user: latar pink muda, tile logo putih→pink menyala, tulisan putih, bar footer pink tua dengan pill putih (IG + WA) — dicek di preview dan PNG 1080×1440; tab Cowok tetap gelap.
+- [x] Tab Cowok disamakan strukturnya dengan Cewek tapi tone hitam + emas: latar hitam dengan semburat emas, tile logo putih→emas, bar footer emas dengan pill putih bertulisan hitam (IG + WA + Booking Now) — kedua tab dicek di preview dan PNG hasil unduh tetap 1080×1440.
 
 
 
