@@ -42,6 +42,8 @@
 - [x] Footer master feed diisi kontak asli: cewek @ggsbeauty.hair.co + WA 0823-4277-7723, cowok @hairstudio.ggs.bdg + WA 0813-3335-9200, plus tombol "Booking Now" dan Nempo.id — dicek di preview dan di file PNG hasil unduh (1080×1440).
 - [x] Footer master feed: teks "Nempo.id" dihapus, ikon huruf "@" & "WA" diganti ikon Instagram dan WhatsApp asli — kedua tab dicek di preview dan di file PNG hasil unduh (1080×1440), tidak ada error.
 - [x] Footer master feed dikecilkan (panel, ikon, dan ukuran tulisan diturunkan) biar tidak mendominasi kartu — kedua tab dicek di preview dan di PNG 1080×1440.
+- [x] Tab Cewek pakai tone warna dari acuan user: latar pink muda, tile logo putih→pink menyala, tulisan putih, bar footer pink tua dengan pill putih (IG + WA) — dicek di preview dan PNG 1080×1440; tab Cowok tetap gelap.
+
 
 
 

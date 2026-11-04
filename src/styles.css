@@ -78,6 +78,9 @@
   /* GGS brand tokens */
   --color-ggs-pink: var(--ggs-pink);
   --color-ggs-pink-soft: var(--ggs-pink-soft);
+  --color-ggs-pink-brand: var(--ggs-pink-brand);
+  --color-ggs-pink-deep: var(--ggs-pink-deep);
+  --color-ggs-pink-hot: var(--ggs-pink-hot);
   --color-ggs-gold: var(--ggs-gold);
   --color-ggs-gold-soft: var(--ggs-gold-soft);
   --color-ggs-ink: var(--ggs-ink);
@@ -85,6 +88,7 @@
   --color-ggs-dark-card: var(--ggs-dark-card);
   --color-ggs-gray: var(--ggs-gray);
 }
+
 
 :root {
   --radius: 0.625rem;
@@ -123,6 +127,10 @@
   /* GGS brand colors */
   --ggs-pink: oklch(0.562 0.186 3);
   --ggs-pink-soft: oklch(0.955 0.018 350);
+  /* tone cewek (acuan user): pink muda, pink tua, pink menyala */
+  --ggs-pink-brand: oklch(0.7575 0.1512 0.2);
+  --ggs-pink-deep: oklch(0.6514 0.2099 4.7);
+  --ggs-pink-hot: oklch(0.6525 0.23 6.8);
   --ggs-gold: oklch(0.715 0.128 88);
   --ggs-gold-soft: oklch(0.94 0.045 95);
   --ggs-ink: oklch(0.2 0.015 270);
@@ -130,6 +138,7 @@
   --ggs-dark-card: oklch(0.22 0.012 270);
   --ggs-gray: oklch(0.55 0.02 260);
 }
+
 
 .dark {
   --background: oklch(0.129 0.042 264.695);

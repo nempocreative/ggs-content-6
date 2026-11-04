@@ -71,8 +71,9 @@ function GalleryItem({ id, master }: { id: string; master?: Brand }) {
                   className={`m-[56px] flex flex-1 items-center justify-center rounded-[28px] border-4 border-dashed text-[40px] font-bold ${
                     master === "hair"
                       ? "border-ggs-gold/45 text-ggs-gold/80"
-                      : "border-ggs-pink/40 text-ggs-pink/70"
+                      : "border-white/60 text-white/90"
                   }`}
+
                 >
                   Area isi konten
                 </div>
