@@ -52,7 +52,7 @@ export function FeedFrame({
         <div className={`relative overflow-hidden rounded-[36px] ${panel}`}>
           <div className={`absolute inset-y-0 left-0 w-[12px] ${accentBg}`} />
 
-          <div className="flex items-center gap-[28px] py-[30px] pl-[46px] pr-[38px]">
+          <div className="flex items-center gap-[36px] py-[30px] pl-[46px] pr-[38px]">
             {/* logo dikasih cincin warna brand */}
             <div className={`shrink-0 rounded-full p-[7px] ${accentBg}`}>
               <img src={logo} alt="logo" className="h-[104px] w-[104px] rounded-full object-cover" />
@@ -61,7 +61,7 @@ export function FeedFrame({
             {/* nama brand */}
             <div className="flex min-w-0 flex-1 flex-col justify-center">
               <div
-                className={`whitespace-nowrap text-[54px] font-black uppercase leading-[0.9] tracking-[-0.01em] ${ink}`}
+                className={`whitespace-nowrap text-[50px] font-black uppercase leading-[0.9] tracking-[-0.01em] ${ink}`}
                 style={DISPLAY}
               >
                 {beauty ? "GGS Beauty" : "GGS Hair Studio"}
