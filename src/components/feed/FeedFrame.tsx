@@ -6,8 +6,12 @@ import logoHair from "@/assets/ggs-hair-studio-logo.png";
 import bgBeauty from "@/assets/feed-bg-beauty.jpg";
 import bgHair from "@/assets/feed-bg-hair.jpg";
 
-const HEAD = { fontFamily: "'Trebuchet MS', sans-serif" };
+/** Font display buat nama brand + tagline; body tetap Calibri biar aman di Office. */
+const DISPLAY = { fontFamily: "'Fraunces', 'Trebuchet MS', serif" };
 const BODY = { fontFamily: "Calibri, sans-serif" };
+
+const TAGLINE_LINE1 = "Grooming";
+const TAGLINE_LINE2 = "is better";
 
 /** Layer gelap/terang biar tulisan tetap kebaca di atas foto dekor. */
 const SCRIM_LIGHT =
@@ -44,31 +48,48 @@ export function FeedFrame({
       <div className="absolute inset-0" style={{ background: isDark ? SCRIM_DARK : SCRIM_LIGHT }} />
 
       {/* HEADER */}
-      <div className="relative px-[52px] pt-[48px]">
-        <div className={`rounded-[34px] px-[34px] py-[28px] ${panel}`}>
-          <div className="flex items-center gap-[26px]">
-            <div className={`rounded-full p-[6px] ${accentBg}`}>
+      <div className="relative px-[52px] pt-[46px]">
+        <div className={`relative overflow-hidden rounded-[36px] ${panel}`}>
+          <div className={`absolute inset-y-0 left-0 w-[12px] ${accentBg}`} />
+
+          <div className="flex items-center gap-[28px] py-[30px] pl-[46px] pr-[38px]">
+            {/* logo dikasih cincin warna brand */}
+            <div className={`shrink-0 rounded-full p-[7px] ${accentBg}`}>
               <img src={logo} alt="logo" className="h-[104px] w-[104px] rounded-full object-cover" />
             </div>
-            <div className="flex flex-col">
-              <div className={`text-[20px] font-bold uppercase tracking-[0.4em] ${accentText}`} style={HEAD}>
-                {beauty ? "Nail · Lash · Beauty" : "Barber · Hair · Style"}
+
+            {/* nama brand */}
+            <div className="flex min-w-0 flex-1 flex-col justify-center">
+              <div
+                className={`whitespace-nowrap text-[54px] font-black uppercase leading-[0.9] tracking-[-0.01em] ${ink}`}
+                style={DISPLAY}
+              >
+                {beauty ? "GGS Beauty" : "GGS Hair Studio"}
               </div>
-              <div className={`text-[44px] font-black leading-none tracking-tight ${ink}`} style={HEAD}>
-                {beauty ? "GGS BEAUTY" : "GGS HAIR STUDIO"}
+              <div className="mt-[18px] flex items-center gap-[14px]">
+                <div className={`h-[6px] w-[76px] rounded-full ${accentBg}`} />
+                <div className={`h-[2px] flex-1 ${line}`} />
+                <div className={`h-[12px] w-[12px] rotate-45 ${accentBg}`} />
               </div>
-              <div className={`mt-[6px] text-[22px] ${muted}`}>Garut, Jawa Barat</div>
             </div>
-            {badge && (
-              <div className={`ml-auto -rotate-3 rounded-[18px] px-[30px] py-[14px] text-[26px] font-black uppercase tracking-widest shadow-lg ${beauty ? "bg-ggs-pink text-white" : "bg-ggs-gold text-ggs-dark"}`} style={HEAD}>
-                {badge}
-              </div>
-            )}
-          </div>
-          <div className="mt-[26px] flex items-center gap-[16px]">
-            <div className={`h-[6px] w-[90px] rounded-full ${accentBg}`} />
-            <div className={`h-[2px] flex-1 ${line}`} />
-            <div className={`h-[12px] w-[12px] rotate-45 ${accentBg}`} />
+
+            {/* tagline */}
+            <div className="flex shrink-0 flex-col items-end">
+              {badge && (
+                <span
+                  className={`mb-[10px] -rotate-2 rounded-full px-[26px] py-[9px] text-[22px] font-bold uppercase tracking-[0.18em] ${beauty ? "bg-ggs-pink text-white" : "bg-ggs-gold text-ggs-dark"}`}
+                  style={BODY}
+                >
+                  {badge}
+                </span>
+              )}
+              <span className={`text-[46px] italic leading-[0.95] ${ink}`} style={DISPLAY}>
+                {TAGLINE_LINE1}
+              </span>
+              <span className={`text-[46px] italic leading-[0.95] ${ink}`} style={DISPLAY}>
+                {TAGLINE_LINE2}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -85,10 +106,10 @@ export function FeedFrame({
           </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-[16px]">
-              <span className={`flex h-[48px] w-[48px] items-center justify-center rounded-full text-[24px] font-black ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`} style={HEAD}>@</span>
-              <span className={`text-[28px] font-bold ${ink}`} style={HEAD}>{handle}</span>
+              <span className={`flex h-[48px] w-[48px] items-center justify-center rounded-full text-[24px] font-black ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`} style={BODY}>@</span>
+              <span className={`text-[28px] font-bold ${ink}`} style={BODY}>{handle}</span>
             </div>
-            <span className={`text-[22px] font-bold uppercase tracking-[0.3em] ${accentText}`} style={HEAD}>Booking via DM</span>
+            <span className={`text-[22px] font-bold uppercase tracking-[0.3em] ${accentText}`} style={BODY}>Booking via DM</span>
             <span className={`text-[22px] ${muted}`}>Nempo.id</span>
           </div>
         </div>
