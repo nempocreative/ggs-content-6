@@ -61,15 +61,14 @@ export function FeedFrame({
             {/* nama brand */}
             <div className="flex min-w-0 flex-1 flex-col justify-center">
               <div
-                className={`whitespace-nowrap text-[50px] font-black uppercase leading-[0.9] tracking-[-0.01em] ${ink}`}
+                className={`whitespace-nowrap text-[36px] font-bold uppercase leading-[1] tracking-[0.01em] ${ink}`}
                 style={DISPLAY}
               >
                 {beauty ? "GGS Beauty" : "GGS Hair Studio"}
               </div>
-              <div className="mt-[18px] flex items-center gap-[14px]">
-                <div className={`h-[6px] w-[76px] rounded-full ${accentBg}`} />
-                <div className={`h-[2px] flex-1 ${line}`} />
-                <div className={`h-[12px] w-[12px] rotate-45 ${accentBg}`} />
+              <div className="mt-[14px] flex items-center gap-[12px]">
+                <div className={`h-[4px] w-[62px] rounded-full ${accentBg}`} />
+                <div className={`h-[1px] flex-1 ${line}`} />
               </div>
             </div>
 
@@ -83,10 +82,10 @@ export function FeedFrame({
                   {badge}
                 </span>
               )}
-              <span className={`text-[46px] italic leading-[0.95] ${ink}`} style={DISPLAY}>
+              <span className={`text-[30px] italic leading-[1.05] ${ink}`} style={DISPLAY}>
                 {TAGLINE_LINE1}
               </span>
-              <span className={`text-[46px] italic leading-[0.95] ${ink}`} style={DISPLAY}>
+              <span className={`text-[30px] italic leading-[1.05] ${ink}`} style={DISPLAY}>
                 {TAGLINE_LINE2}
               </span>
             </div>
@@ -99,10 +98,9 @@ export function FeedFrame({
       {/* FOOTER */}
       <div className="relative px-[52px] pb-[44px]">
         <div className={`rounded-[34px] px-[34px] py-[26px] ${panel}`}>
-          <div className="mb-[22px] flex items-center gap-[16px]">
-            <div className={`h-[12px] w-[12px] rotate-45 ${accentBg}`} />
-            <div className={`h-[2px] flex-1 ${line}`} />
-            <div className={`h-[6px] w-[90px] rounded-full ${accentBg}`} />
+          <div className="mb-[20px] flex items-center gap-[14px]">
+            <div className={`h-[1px] flex-1 ${line}`} />
+            <div className={`h-[4px] w-[80px] rounded-full ${accentBg}`} />
           </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-[16px]">
