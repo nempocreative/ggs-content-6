@@ -49,10 +49,9 @@ export function FeedFrame({
   const bg = beauty ? bgBeauty : bgHair;
   const isDark = dark ?? brand === "hair";
   const accentBg = beauty ? "bg-ggs-pink" : "bg-ggs-gold";
-  const accentText = beauty ? "text-ggs-pink" : "text-ggs-gold";
   const ink = isDark ? "text-white" : "text-ggs-ink";
-  const muted = isDark ? "text-white/70" : "text-ggs-gray";
   const line = isDark ? "bg-white/25" : "bg-ggs-ink/15";
+
   const panel = isDark
     ? "bg-black/45 ring-1 ring-white/15 backdrop-blur-[10px]"
     : "bg-white/65 ring-1 ring-white/80 backdrop-blur-[10px]";
