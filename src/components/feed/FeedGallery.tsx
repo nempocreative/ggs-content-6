@@ -66,8 +66,8 @@ function GalleryItem({ id, master }: { id: string; master?: Brand }) {
         >
           <div style={{ transform: `scale(${scale})`, transformOrigin: "top left" }}>
             {master ? (
-              <FeedFrame id={t.id} brand={master}>
-                <div className="m-[72px] flex flex-1 items-center justify-center rounded-[28px] border-4 border-dashed border-ggs-gray/40 text-[40px] text-ggs-gray">
+              <FeedFrame id={t.id} brand={master} dark={master === "hair"}>
+                <div className="m-[56px] flex flex-1 items-center justify-center rounded-[28px] border-4 border-dashed border-ggs-pink/40 text-[40px] font-bold text-ggs-pink/70">
                   Area isi konten
                 </div>
               </FeedFrame>
