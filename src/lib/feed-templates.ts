@@ -2,6 +2,13 @@ import type { Brand } from "@/lib/content-plan";
 
 export type FeedKind = "promo" | "harian";
 
+/** Harga coret buat kartu promo: harga sekarang, harga sebelumnya, dan untung yang ditulis. */
+export interface FeedOffer {
+  now: string;
+  old?: string;
+  save?: string;
+}
+
 export interface FeedTemplate {
   id: string;
   brand: Brand;
@@ -14,6 +21,7 @@ export interface FeedTemplate {
   badge?: string;
   footer: string;
   dark: boolean;
+  offer?: FeedOffer;
 }
 
 const B = "beauty" as const;
@@ -21,6 +29,20 @@ const H = "hair" as const;
 
 export const feedTemplates: FeedTemplate[] = [
   // ---- PROMO ----
+  {
+    id: "promo-massage-beauty",
+    brand: B,
+    kind: "promo",
+    title: "Promo Massage — Beauty",
+    headline: "MASSAGE",
+    sub: "Badan enteng, pikiran tenang",
+    body: ["Durasi ± 60 menit", "Aroma oil bisa request", "Wajib booking, slot terbatas"],
+    cta: "Booking via WA sekarang",
+    badge: "PROMO",
+    footer: "@ggsbeauty.hair.co",
+    dark: false,
+    offer: { now: "Rp85.000", old: "Rp125.000", save: "Hemat Rp40.000" },
+  },
   {
     id: "promo-1111-beauty",
     brand: B,
