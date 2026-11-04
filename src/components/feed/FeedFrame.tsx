@@ -107,15 +107,33 @@ export function FeedFrame({
             <div className={`h-[1px] flex-1 ${line}`} />
             <div className={`h-[4px] w-[80px] rounded-full ${accentBg}`} />
           </div>
+
+          {/* baris 1: Instagram + tombol booking */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-[16px]">
               <span className={`flex h-[48px] w-[48px] items-center justify-center rounded-full text-[24px] font-black ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`} style={BODY}>@</span>
               <span className={`text-[28px] font-bold ${ink}`} style={BODY}>{handle}</span>
             </div>
-            <span className={`text-[22px] font-bold uppercase tracking-[0.3em] ${accentText}`} style={BODY}>Booking via DM</span>
+            <span
+              className={`rounded-full px-[28px] py-[12px] text-[22px] font-black uppercase tracking-[0.18em] ${accentBg} ${beauty ? "text-white" : "text-ggs-dark"}`}
+              style={BODY}
+            >
+              Booking Now
+            </span>
+          </div>
+
+          {/* baris 2: WhatsApp + kredit */}
+          <div className="mt-[18px] flex items-center justify-between">
+            <div className="flex items-center gap-[16px]">
+              <span className={`flex h-[44px] w-[44px] items-center justify-center rounded-full text-[19px] font-black ${accentText} ring-2 ${isDark ? "ring-white/30" : "ring-ggs-ink/15"}`} style={BODY}>
+                WA
+              </span>
+              <span className={`text-[26px] font-bold tracking-[0.02em] ${ink}`} style={BODY}>{wa}</span>
+            </div>
             <span className={`text-[22px] ${muted}`}>Nempo.id</span>
           </div>
         </div>
+
       </div>
     </div>
   );
