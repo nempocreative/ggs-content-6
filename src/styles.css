@@ -2,6 +2,22 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* Font display desain feed — file lokal biar ikut ke-embed waktu unduh PNG. */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/fonts/fraunces-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/fonts/fraunces-italic.woff2") format("woff2");
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
