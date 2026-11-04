@@ -41,5 +41,7 @@
 - [x] Header master feed dikecilkan (nama brand 50px→36px, tagline 46px→30px) dan semua hiasan bintang/berlian di header & footer dihapus; hiasan bunga/bintang di sudut background AI juga dibuang (feed-bg-hair-clean.jpg & feed-bg-beauty-clean.jpg) — kedua tab dicek di preview, PNG tetap 1080×1440.
 - [x] Footer master feed diisi kontak asli: cewek @ggsbeauty.hair.co + WA 0823-4277-7723, cowok @hairstudio.ggs.bdg + WA 0813-3335-9200, plus tombol "Booking Now" dan Nempo.id — dicek di preview dan di file PNG hasil unduh (1080×1440).
 - [x] Footer master feed: teks "Nempo.id" dihapus, ikon huruf "@" & "WA" diganti ikon Instagram dan WhatsApp asli — kedua tab dicek di preview dan di file PNG hasil unduh (1080×1440), tidak ada error.
+- [x] Footer master feed dikecilkan (panel, ikon, dan ukuran tulisan diturunkan) biar tidak mendominasi kartu — kedua tab dicek di preview dan di PNG 1080×1440.
+
 
 
